@@ -1,0 +1,89 @@
+{
+  "root": true,
+  "parser": "typescript-eslint-parser",
+  "plugins": [
+    "eslint-plugin-typescript",
+    "flowtype",
+    "react",
+    "prettier",
+    "jest"
+  ],
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "16.8"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".tsx"
+        ]
+      }
+    }
+  },
+  "extends": [
+    "eslint-config-react-app",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "legacyDecorators": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "no-new-func": "off",
+    "import/prefer-default-export": "off",
+    "import/no-duplicates": "off",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "react/jsx-filename-extension": "off",
+    "react/no-multi-comp": "off",
+    "react/no-unused-prop-types": "off",
+    "react/require-default-props": "off",
+    "no-restricted-syntax": "off",
+    "no-continue": "off",
+    "no-await-in-loop": "off",
+    "no-void": "off",
+    "no-var": "off",
+    "no-console": "off",
+    "no-script-url": "off",
+    "consistent-return": "off",
+    "no-return-assign": "off",
+    "linebreak-style": 0,
+    "react/sort-comp": [
+      "error",
+      {
+        "order": [
+          "static-methods",
+          "type-annotations",
+          "lifecycle",
+          "everything-else",
+          "render"
+        ]
+      }
+    ],
+    "camelcase": "off",
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "class-methods-use-this": "off",
+    "react/prefer-stateless-function": "off",
+    "prettier/prettier": "warn"
+  }
+}
