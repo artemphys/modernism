@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { renderRoutes, RouteConfigComponentProps } from "react-router-config";
 import { Layout, Breadcrumb } from "antd";
+import {ArtistPage} from "../ArtistPage/index";
 
 import logo from "../../logo.svg";
 import "./App.css";
@@ -53,6 +54,7 @@ export class App extends Component<Props> {
           {this.renderBreadcrumbs()}
         </Breadcrumb>
         <body>{renderRoutes(route.routes)}</body>
+        <ArtistPage></ArtistPage>
       </Layout>
     );
   }
