@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from "react";
+
 import { Link } from "react-router-dom";
 import { renderRoutes, RouteConfigComponentProps } from "react-router-config";
-import { Layout, Breadcrumb } from "antd";
+import { Layout, Breadcrumb, Tabs } from "antd";
+
 
 import logo from "../../logo.svg";
 import "./App.css";
+
 
 interface Props extends RouteConfigComponentProps {
   route: any;
@@ -15,7 +18,6 @@ export class App extends Component<Props> {
   get pathItems() {
     const pathItems = this.props.location.pathname.split("/");
     pathItems.splice(0, 1);
-
     return pathItems;
   }
 
@@ -29,6 +31,8 @@ export class App extends Component<Props> {
       name: el,
       path: `/${items.slice(0, i + 1).join("/")}`
     }));
+
+
 
     return (
       <Fragment>
@@ -52,6 +56,7 @@ export class App extends Component<Props> {
         <Breadcrumb style={{ margin: "16px 0" }}>
           {this.renderBreadcrumbs()}
         </Breadcrumb>
+        <Tabs></Tabs>
         <body>{renderRoutes(route.routes)}</body>
       </Layout>
     );
