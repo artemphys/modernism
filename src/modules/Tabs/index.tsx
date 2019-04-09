@@ -9,12 +9,16 @@ export default class TabPanel extends Component {
   state = {
     activeTab: '1'
   };
-  changeTab = activeKey => {
+
+  console.log(this.state.activeTab);
+
+  changeTab = (activeKey: any)  => {
     console.log(activeKey);
     this.setState({
       activeTab: activeKey
-    })
-  }
+    });
+    console.log(this.state.activeTab);
+  };
 
   render() {
     return (
