@@ -2,12 +2,10 @@ import React, { Component, Fragment } from "react";
 
 import { Link } from "react-router-dom";
 import { renderRoutes, RouteConfigComponentProps } from "react-router-config";
-import { Layout, Breadcrumb, Tabs } from "antd";
-
+import { Layout, Breadcrumb } from "antd";
 
 import logo from "../../logo.svg";
 import "./App.css";
-
 
 interface Props extends RouteConfigComponentProps {
   route: any;
@@ -32,8 +30,6 @@ export class App extends Component<Props> {
       path: `/${items.slice(0, i + 1).join("/")}`
     }));
 
-
-
     return (
       <Fragment>
         {links.map((el: any) => (
@@ -56,7 +52,6 @@ export class App extends Component<Props> {
         <Breadcrumb style={{ margin: "16px 0" }}>
           {this.renderBreadcrumbs()}
         </Breadcrumb>
-        <Tabs></Tabs>
         <body>{renderRoutes(route.routes)}</body>
       </Layout>
     );
