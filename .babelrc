@@ -1,0 +1,41 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "exclude": ["transform-async-to-generator", "transform-regenerator"],
+        "loose": true,
+        "debug": true
+      }
+    ],
+    ["react-app", { "flow": false, "typescript": true }]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        ["transform-object-rest-spread", { "useBuiltIns": true }],
+        [
+          "import",
+          {
+            "libraryName": "antd",
+            "libraryDirectory": "lib",
+            "style": "css"
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        [
+          "import",
+          {
+            "libraryName": "antd",
+            "libraryDirectory": "lib",
+            "style": "css"
+          }
+        ]
+      ]
+    }
+  }
+}
