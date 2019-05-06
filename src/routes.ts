@@ -19,12 +19,6 @@ export const routes = <Array<RouteConfig>>[
       {
         component: ArtistPage,
         path: "/artists"
-        // children: [
-        //   {
-        //     component: ArtistList,
-        //     path: "/artist/{name}"
-        //   }
-        // ]
       },
       {
         component: GenrePage,

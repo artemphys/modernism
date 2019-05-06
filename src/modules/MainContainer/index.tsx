@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+
 import { Link } from "react-router-dom";
 import { renderRoutes, RouteConfigComponentProps } from "react-router-config";
 import { Layout, Breadcrumb } from "antd";
@@ -15,7 +16,6 @@ export class App extends Component<Props> {
   get pathItems() {
     const pathItems = this.props.location.pathname.split("/");
     pathItems.splice(0, 1);
-
     return pathItems;
   }
 
