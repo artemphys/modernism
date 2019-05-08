@@ -1,10 +1,8 @@
 import { App } from "./modules/MainContainer";
-import { HomePage } from "./modules/HomePage";
 import { RouteConfig } from "react-router-config";
+import { ArtistsPage } from "./modules/ArtistsPage";
 import { ArtistPage } from "./modules/ArtistsPage/ArtistPage";
-import { GenrePage } from "./modules/GenrePage";
-//import { ArtistList } from "./modules/ArtistsPage";
-// import { ArtistCard } from "./modules/ArtistsPage/ArtistCard";
+import { GenresPage } from "./modules/GenresPage";
 
 export const routes = <Array<RouteConfig>>[
   {
@@ -12,17 +10,28 @@ export const routes = <Array<RouteConfig>>[
     path: "/",
     routes: [
       {
-        component: HomePage,
+        component: ({ history }: { history: any }) => {
+          history.replace("/artists");
+          return null;
+        },
         path: "/",
+        redirect: "/artists",
+        exact: true
+      },
+      {
+        component: ArtistsPage,
+        path: "/artists",
         exact: true
       },
       {
         component: ArtistPage,
-        path: "/artists"
+        path: "/artists/:id",
+        exact: true
       },
       {
-        component: GenrePage,
-        path: "/genre"
+        component: GenresPage,
+        path: "/genre",
+        exact: true
       }
     ]
   }

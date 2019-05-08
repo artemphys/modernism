@@ -1,29 +1,38 @@
 import React, { Component } from "react";
+import { RouteComponentProps } from "react-router";
+
 import { ArtistCard } from "./ArtistCard";
+import { MainTabs } from "../MainTabs";
 import "./ArtistsPage.css";
 
 const DATA = [
   {
-    id: 1,
-    name: "Europe's famous artist",
-    imgUrl: "https://placeKitten.com/300/150"
+    id: "Vincent-Willem-van-Gogh",
+    name: "Vincent Willem van Gogh",
+    imgUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1135px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
   },
   {
-    id: 2,
-    name: "Spanish famous artist",
-    imgUrl: "http://placeKitten.com/300/200"
+    id: "Eugène-Henri-Paul-Gauguin",
+    name: "Eugène Henri Paul Gauguin",
+    imgUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Paul_Gauguin_036.jpg/1148px-Paul_Gauguin_036.jpg"
   },
   {
-    id: 3,
-    name: "German famous artist",
-    imgUrl: "https://placeKitten.com/300/250"
+    id: "Paul-Cézanne",
+    name: "Paul Cézanne",
+    imgUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/2/27/Woman_in_a_Green_Hat_%28by_Paul_C%C3%A9zanne%2C_1894-95%29.jpg"
   }
 ];
 
-export class ArtistList extends Component {
+interface Props extends RouteComponentProps {}
+
+export class ArtistsPage extends Component<Props> {
   render() {
     return (
       <div>
+        <MainTabs />
         <ul className="card-list">
           {DATA.map((item, id) => (
             <li key={id} className="card-item">

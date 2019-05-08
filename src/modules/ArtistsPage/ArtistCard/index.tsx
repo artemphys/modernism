@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Card } from "antd";
 
 const { Meta } = Card;
 
 interface Props {
   card: {
-    id: number;
+    id: string;
     name: string;
     imgUrl: string;
   };
@@ -13,11 +14,11 @@ interface Props {
 
 export class ArtistCard extends Component<Props> {
   render() {
-    const { name, imgUrl } = this.props.card;
+    const { id, name, imgUrl } = this.props.card;
     return (
       <Card hoverable cover={<img src={imgUrl} style={{ width: 240 }} />}>
         <Meta title={name} />
-        <a href="#">More</a>
+        <Link to={`/artists/${id}`}>More...</Link>
       </Card>
     );
   }

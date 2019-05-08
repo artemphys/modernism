@@ -49,9 +49,9 @@ export class App extends Component<Props> {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        <Breadcrumb style={{ margin: "16px 0" }}>
-          {this.renderBreadcrumbs()}
-        </Breadcrumb>
+        {/*<Breadcrumb style={{ margin: "16px 0" }}>*/}
+        {/*{this.renderBreadcrumbs()}*/}
+        {/*</Breadcrumb>*/}
         <body>{renderRoutes(route.routes)}</body>
       </Layout>
     );
