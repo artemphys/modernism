@@ -1,46 +1,40 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router";
 
-import { ArtistCard } from "./ArtistCard";
-import { MainTabs } from "../MainTabs";
+import { ArtistsList } from "./ArtistsList";
+import { getArtists } from "./actions";
 import "./ArtistsPage.css";
 
-const DATA = [
-  {
-    id: "Vincent-Willem-van-Gogh",
-    name: "Vincent Willem van Gogh",
-    imgUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1135px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
-  },
-  {
-    id: "Eugène-Henri-Paul-Gauguin",
-    name: "Eugène Henri Paul Gauguin",
-    imgUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Paul_Gauguin_036.jpg/1148px-Paul_Gauguin_036.jpg"
-  },
-  {
-    id: "Paul-Cézanne",
-    name: "Paul Cézanne",
-    imgUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/2/27/Woman_in_a_Green_Hat_%28by_Paul_C%C3%A9zanne%2C_1894-95%29.jpg"
-  }
-];
+interface Props extends RouteComponentProps {
+  artists: any;
+  getArtistsList: () => any;
+}
 
-interface Props extends RouteComponentProps {}
-
-export class ArtistsPage extends Component<Props> {
+class ArtistsPage extends Component<Props> {
   render() {
+    const { artists, getArtistsList } = this.props;
+
     return (
-      <div>
-        <MainTabs />
-        <ul className="card-list">
-          {DATA.map((item, id) => (
-            <li key={id} className="card-item">
-              <ArtistCard card={item} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ArtistsList
+        data={artists.data}
+        error={artists.error}
+        getData={getArtistsList}
+        isFetching={artists.isFetching}
+      />
     );
   }
 }
+
+const mapStateToProps = (store: any) => ({
+  artists: store.artists
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getArtistsList: () => dispatch(getArtists())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ArtistsPage);

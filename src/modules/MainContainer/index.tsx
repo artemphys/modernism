@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+// import { withRouter } from "react-router";
 
 import { Link } from "react-router-dom";
 import { renderRoutes, RouteConfigComponentProps } from "react-router-config";
@@ -57,3 +58,5 @@ export class App extends Component<Props> {
     );
   }
 }
+
+// export default withRouter(App);

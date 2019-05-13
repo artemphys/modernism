@@ -33,25 +33,17 @@ const DATA = [
 
 interface Props extends RouteComponentProps {}
 
+//TODO: get location from props and send it to MainTabs
+//TODO: Use antd Row, Col instead of custom styles
+
 export class GenresPage extends Component<Props> {
   render() {
     return (
       <div>
         <MainTabs />
-        <p className="main-description">
-          In the visual arts the roots of Modernism are often traced back to
-          painter Édouard Manet, who, beginning in the 1860s, broke away from
-          inherited notions of perspective, modeling, and subject matter. The
-          avant-garde movements that followed—including Impressionism,
-          Post-Impressionism, Cubism, Futurism, Expressionism, Constructivism,
-          de Stijl, and Abstract Expressionism—are generally defined as
-          Modernist.
-        </p>
-        <ul className="card-list">
-          {DATA.map((item, id) => (
-            <li key={id} className="card-item">
-              <GenreCard item={item} />
-            </li>
+        <ul>
+          {DATA.map(item => (
+            <GenreCard item={item} />
           ))}
         </ul>
       </div>
