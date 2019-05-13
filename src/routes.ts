@@ -3,6 +3,7 @@ import { RouteConfig } from "react-router-config";
 import { ArtistsPage } from "./modules/ArtistsPage";
 import { ArtistPage } from "./modules/ArtistsPage/ArtistPage";
 import { GenresPage } from "./modules/GenresPage";
+import { GenrePage } from "./modules/GenresPage/GenrePage";
 
 export const routes = <Array<RouteConfig>>[
   {
@@ -30,7 +31,12 @@ export const routes = <Array<RouteConfig>>[
       },
       {
         component: GenresPage,
-        path: "/genre",
+        path: "/genres",
+        exact: true
+      },
+      {
+        component: GenrePage,
+        path: "/genres/:id",
         exact: true
       }
     ]
