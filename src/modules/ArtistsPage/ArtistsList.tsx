@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-
+import { Row, Col } from "antd";
 import { ArtistCard } from "./ArtistCard";
 import { MainTabs } from "../MainTabs";
-import "./ArtistsPage.css";
 import { LOADING, LOADING_FAILED } from "../../constants";
 
 interface Props {
@@ -10,6 +9,7 @@ interface Props {
   error: any;
   getData: () => any;
   isFetching: boolean;
+  location: any;
 }
 
 export class ArtistsList extends Component<Props> {
@@ -23,7 +23,6 @@ export class ArtistsList extends Component<Props> {
 
   render() {
     const { data, error, isFetching } = this.props;
-
     if (error) {
       return <p>{LOADING_FAILED}</p>;
     }
@@ -31,18 +30,17 @@ export class ArtistsList extends Component<Props> {
     if (isFetching) {
       return <p>{LOADING}</p>;
     }
-
     return (
       <div>
-        <MainTabs />
-        <ul className="card-list">
+        <MainTabs location={this.props.location} />
+        <Row type="flex" justify="space-around" align="middle">
           {data &&
             data.map((item: any, id: string) => (
-              <li key={id} className="card-item">
+              <Col span={4} key={id}>
                 <ArtistCard card={item} />
-              </li>
+              </Col>
             ))}
-        </ul>
+        </Row>
       </div>
     );
   }
