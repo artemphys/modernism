@@ -31,7 +31,7 @@ const DATA = [
 ];
 
 interface Props extends RouteComponentProps {
-  location: any;S
+  location: any;
 }
 
 //TODO: get location from props and send it to MainTabs
