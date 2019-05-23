@@ -13,6 +13,7 @@ interface Props extends RouteComponentProps {
 class ArtistsPage extends Component<Props> {
   render() {
     const { artists, getArtistsList, location } = this.props;
+
     return (
       <ArtistsList
         data={artists.data}

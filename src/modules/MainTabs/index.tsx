@@ -8,14 +8,19 @@ interface Props {
 
 export class MainTabs extends Component<Props> {
   onChange = () => {
-    if (this.props.location.pathname === "/artists") {
-      window.location.replace("/genres");
-    } else if (this.props.location.pathname === "/genres") {
-      window.location.replace("/artists");
-    }
+    let { pathname } = this.props.location;
+    let url =
+      pathname === "/artists"
+        ? "/genres"
+        : pathname === "/genres"
+        ? "/artists"
+        : "/artists";
+    window.location.replace(url);
   };
+
   getActiveTab = () =>
     this.props.location.pathname === "/artists" ? "1" : "2";
+
   render() {
     return (
       <Tabs onChange={this.onChange} activeKey={this.getActiveTab()}>

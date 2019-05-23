@@ -34,15 +34,12 @@ interface Props extends RouteComponentProps {
   location: any;
 }
 
-//TODO: get location from props and send it to MainTabs
-//TODO: Use antd Row, Col instead of custom styles
-
 export class GenresPage extends Component<Props> {
   render() {
     return (
       <div>
         <MainTabs location={this.props.location} />
-        <Row type="flex" justify="space-around" align="middle">
+        <Row gutter={16}>
           {DATA.map(item => (
             <Col span={6}>
               <GenreCard item={item} />
