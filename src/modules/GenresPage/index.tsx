@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { MainTabs } from "../MainTabs";
+import { Row, Col } from "antd";
 import { RouteComponentProps } from "react-router";
 import { GenreCard } from "./GenreCard";
-
-import "./GenresPage.css";
 
 const DATA = [
   {
@@ -31,21 +30,22 @@ const DATA = [
   }
 ];
 
-interface Props extends RouteComponentProps {}
-
-//TODO: get location from props and send it to MainTabs
-//TODO: Use antd Row, Col instead of custom styles
+interface Props extends RouteComponentProps {
+  location: any;
+}
 
 export class GenresPage extends Component<Props> {
   render() {
     return (
       <div>
-        <MainTabs />
-        <ul>
+        <MainTabs location={this.props.location} />
+        <Row gutter={16}>
           {DATA.map(item => (
-            <GenreCard item={item} />
+            <Col span={6}>
+              <GenreCard item={item} />
+            </Col>
           ))}
-        </ul>
+        </Row>
       </div>
     );
   }
