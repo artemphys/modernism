@@ -9,12 +9,7 @@ interface Props {
 export class MainTabs extends Component<Props> {
   onChange = () => {
     let { pathname } = this.props.location;
-    let url =
-      pathname === "/artists"
-        ? "/genres"
-        : pathname === "/genres"
-        ? "/artists"
-        : "/artists";
+    let url = pathname === "/artists" ? "/genres" : "/artists";
     window.location.replace(url);
   };
 
