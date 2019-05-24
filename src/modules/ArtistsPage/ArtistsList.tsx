@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Row, Col } from "antd";
 import { ArtistCard } from "./ArtistCard";
 import { MainTabs } from "../MainTabs";
-import { LOADING, LOADING_FAILED } from "../../constants";
+import { Loading } from "../Common/Loading";
+import { LoadingFailed } from "../Common/LoadingFailed";
 
 interface Props {
   data: any;
@@ -25,11 +26,11 @@ export class ArtistsList extends Component<Props> {
     const { data, error, isFetching } = this.props;
 
     if (error) {
-      return <p>{LOADING_FAILED}</p>;
+      return <LoadingFailed />;
     }
 
     if (isFetching) {
-      return <p>{LOADING}</p>;
+      return <Loading />;
     }
 
     return (
