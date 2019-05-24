@@ -3,41 +3,33 @@ import {
   GET_ARTISTS_SUCCESS,
   GET_ARTISTS_FAIL
 } from "../../../constants";
+import { ARTISTS_DATA } from "../../../mock";
 
-let DATA = [
-  {
-    id: "Vincent-Willem-van-Gogh",
-    name: "Vincent Willem van Gogh",
-    imgUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1135px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
-  },
-  {
-    id: "Eugène-Henri-Paul-Gauguin",
-    name: "Eugène Henri Paul Gauguin",
-    imgUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Paul_Gauguin_036.jpg/1148px-Paul_Gauguin_036.jpg"
-  },
-  {
-    id: "Paul-Cézanne",
-    name: "Paul Cézanne",
-    imgUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/2/27/Woman_in_a_Green_Hat_%28by_Paul_C%C3%A9zanne%2C_1894-95%29.jpg"
+const Url = "http://localhost:5000/api/artists";
+
+const getData = async () => {
+  const response = await fetch(Url);
+  const body = await response.json();
+
+  if (response.status !== 200) {
+    return Error("Failed to fetch");
+  } else {
+    return body;
   }
-];
+};
 
-export const getArtists = () => (dispatch: any) => {
+export const getArtists = () => async (dispatch: any) => {
   dispatch({
     type: GET_ARTISTS_REQUEST,
     payload: {}
   });
 
   try {
-    setTimeout(() => {
-      dispatch({
-        type: GET_ARTISTS_SUCCESS,
-        payload: DATA
-      });
-    }, 1000);
+    // const artists = await getData();
+    dispatch({
+      type: GET_ARTISTS_SUCCESS,
+      payload: ARTISTS_DATA // artists.data[0].data
+    });
   } catch (e) {
     dispatch({
       type: GET_ARTISTS_FAIL,
