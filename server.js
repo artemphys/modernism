@@ -12,19 +12,23 @@ app.use(function(req, res, next) {
 });
 const port = 5000;
 
-const url = "/api/artists";
-const dbUrl = "mongodb://localhost/artists";
-
-app.get(url, function(req, res) {
+app.get("/api/artists", function(req, res) {
   mongoose
-    .connect(dbUrl, { useNewUrlParser: true })
-    .then(() => {
+    .connect("mongodb://localhost/artists", { useNewUrlParser: true })
+    .then(() =>
       mongoose.connection.db.collection("artists", (err, collection) =>
-        collection.find({}).toArray((err, data) => {
-          res.send({ status: 200, data });
-        })
-      );
-    })
+        collection
+          .find({
+            ...(req.query.search && {
+              name: { $regex: new RegExp(req.query.search, "gi") }
+              // $text: { $search: req.query.search }
+            })
+          })
+          .toArray((err, data) => {
+            res.send({ status: 200, data });
+          })
+      )
+    )
     .catch(e => console.error(e));
 });
 

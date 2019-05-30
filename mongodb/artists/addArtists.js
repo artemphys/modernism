@@ -1,6 +1,7 @@
-// TODO: remove after DB integration
+const mongoose = require("mongoose");
+const Artists = require("./artists");
 
-export const ARTISTS_DATA = [
+const DATA = [
   {
     id: "Vincent-Willem-van-Gogh",
     name: "Vincent Willem van Gogh",
@@ -32,3 +33,24 @@ export const ARTISTS_DATA = [
       "https://upload.wikimedia.org/wikipedia/commons/3/36/Vassily_Kandinsky%2C_1912_-_Improvisation_27%2C_Garden_of_Love_II.jpg"
   }
 ];
+
+mongoose
+  .connect("mongodb://localhost/artists", { useNewUrlParser: true })
+  .then(() => {
+    const artistsDB = new Artists({
+      _id: new mongoose.Types.ObjectId()
+    });
+
+    artistsDB.save();
+  })
+  .then(() => {
+    mongoose.connection.db.collection("artists", (err, collection) =>
+      collection.insertMany(DATA)
+    );
+  })
+  .then(() => {
+    mongoose.connection.db.collection("artists", (err, collection) =>
+      collection.createIndex({ name: "text", description: "text" })
+    );
+  })
+  .catch(e => console.log(e));

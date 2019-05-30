@@ -3,20 +3,23 @@ import { Tabs } from "antd";
 const TabPane = Tabs.TabPane;
 
 interface Props {
-  location: any;
+  history: any;
 }
 
 export class MainTabs extends Component<Props> {
   onChange = () => {
-    let { pathname } = this.props.location;
-    let url = pathname === "/artists" ? "/genres" : "/artists";
-    window.location.replace(url);
+    let { history } = this.props;
+    let url = history.location.pathname.includes("artists")
+      ? "/genres"
+      : "/artists";
+    history.push(url);
   };
 
   getActiveTab = () =>
-    this.props.location.pathname === "/artists" ? "1" : "2";
+    this.props.history.location.pathname.includes("artists") ? "1" : "2";
 
   render() {
+    console.log(this.props.history);
     return (
       <Tabs onChange={this.onChange} activeKey={this.getActiveTab()}>
         <TabPane tab="Artists" key="1" />

@@ -7,12 +7,12 @@ import { getArtists } from "./actions";
 
 interface Props extends RouteComponentProps {
   artists: any;
-  getArtistsList: () => any;
+  getArtistsList: (search?: string) => any;
 }
 
 class ArtistsPage extends Component<Props> {
   render() {
-    const { artists, getArtistsList, location } = this.props;
+    const { artists, getArtistsList, history } = this.props;
 
     return (
       <ArtistsList
@@ -20,7 +20,7 @@ class ArtistsPage extends Component<Props> {
         error={artists.error}
         getData={getArtistsList}
         isFetching={artists.isFetching}
-        location={location}
+        history={history}
       />
     );
   }
@@ -31,7 +31,7 @@ const mapStateToProps = (store: any) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  getArtistsList: () => dispatch(getArtists())
+  getArtistsList: (search?: string) => dispatch(getArtists(search))
 });
 
 export default connect(

@@ -79,7 +79,8 @@
     "lint:fix:eslint": "eslint --fix src/**/*.tsx",
     "lint:fix:prettier": "prettier --write src/**/*.tsx",
     "lint:fix": "npm run lint:fix:eslint && npm run lint:fix:prettier",
-    "mongo": "nodemon mongodb/index.js"
+    "addArtists": "nodemon mongodb/artists/addArtists.js",
+    "dropArtists": "nodemon mongodb/artists/removeArtists.js"
   },
   "browserslist": [
     ">0.2%",

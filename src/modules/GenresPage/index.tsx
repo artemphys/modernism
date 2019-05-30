@@ -31,14 +31,14 @@ const DATA = [
 ];
 
 interface Props extends RouteComponentProps {
-  location: any;
+  history: any;
 }
 
 export class GenresPage extends Component<Props> {
   render() {
     return (
       <div>
-        <MainTabs location={this.props.location} />
+        <MainTabs history={this.props.history} />
         <Row gutter={16}>
           {DATA.map(item => (
             <Col span={6}>
