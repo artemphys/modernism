@@ -83,19 +83,18 @@ export const columns = [
 ];
 
 export const table_data = [
-         {
-           key: "1",
-           artistName: "Vincent Willem van Gogh",
-           genre: "Post-Impressionism",
-           country: "HET KRÖLLER-MÜLLER MUSEUM",
-           address: "Kröller-Müller Museum Houtkampweg 6 6731 AW Otterlo"
-         },
-         {
-           key: "2",
-           artistName: "Dalí Salvador",
-           genre: "Surrealism",
-           country: "Spain",
-           address:
-             "Gala-Salvador Dalí Square, 5 E-17600 Figueres. Catalonia"
-         }
-       ];
+  {
+    key: "1",
+    artistName: "Vincent Willem van Gogh",
+    genre: "Post-Impressionism",
+    country: "HET KRÖLLER-MÜLLER MUSEUM",
+    address: "Kröller-Müller Museum Houtkampweg 6 6731 AW Otterlo"
+  },
+  {
+    key: "2",
+    artistName: "Dalí Salvador",
+    genre: "Surrealism",
+    country: "Spain",
+    address: "Gala-Salvador Dalí Square, 5 E-17600 Figueres. Catalonia"
+  }
+];

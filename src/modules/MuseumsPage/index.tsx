@@ -11,13 +11,13 @@ interface Props extends RouteComponentProps {
   museums: any;
 }
 
-export class MuseumsPage extends Component<Props> {
+class MuseumsPage extends Component<Props> {
   componentDidMount() {
     this.props.getMuseumsTable();
   }
+
   render() {
     const { museums } = this.props;
-    console.log(this.props);
     return (
       <div>
         <h1>museums</h1>

@@ -7,7 +7,6 @@ import { Layout, Breadcrumb } from "antd";
 
 import logo from "../../logo.svg";
 import "./App.css";
-import { MuseumsPage } from "../MuseumsPage";
 
 interface Props extends RouteConfigComponentProps {
   route: any;
