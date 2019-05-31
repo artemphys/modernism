@@ -1,45 +1,45 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Table } from "antd";
+import { getMuseums } from "./actions";
+import { RouteComponentProps } from "react-router";
 
-const columns = [
-  {
-    title: "artistName",
-    dataIndex: "artistName",
-    key: "artistName"
-  },
-  {
-    title: "genre",
-    dataIndex: "genre",
-    key: "genre"
-  },
-  {
-    title: "country",
-    dataIndex: "country",
-    key: "country"
-  },
-  {
-    title: "address",
-    dataIndex: "address",
-    key: "address"
-  }
-];
+import { columns } from "../../mock";
 
-const data = [
-  {
-    key: "",
-    artistName: "",
-    genre: "",
-    country: "",
-    address: ""
-  }
-];
-export class MuseumsPage extends Component {
+interface Props extends RouteComponentProps {
+  getMuseumsTable: (search?: string) => any;
+  table_data: any;
+  museums: any;
+}
+
+export class MuseumsPage extends Component<Props> {
   render() {
+    const { getMuseumsTable, museums } = this.props;
+    console.log(this.props);
     return (
       <div>
         <h1>museums</h1>
-        <Table columns={columns} dataSource={data} />
+        <Table
+          getData={getMuseumsTable}
+          columns={columns}
+          dataSource={museums.data}
+          error={museums.error}
+          isFetching={museums.isFetching}
+        />
       </div>
     );
   }
 }
+
+const mapStateToProps = (store: any) => ({
+  museums: store.museums
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getMuseumsTable: () => dispatch(getMuseums())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MuseumsPage);

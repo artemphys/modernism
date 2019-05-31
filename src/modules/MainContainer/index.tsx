@@ -7,6 +7,7 @@ import { Layout, Breadcrumb } from "antd";
 
 import logo from "../../logo.svg";
 import "./App.css";
+import { MuseumsPage } from "../MuseumsPage";
 
 interface Props extends RouteConfigComponentProps {
   route: any;
@@ -50,6 +51,9 @@ export class App extends Component<Props> {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
+        <a>
+          <Link to="/museums">Museums</Link>
+        </a>
         {/*<Breadcrumb style={{ margin: "16px 0" }}>*/}
         {/*{this.renderBreadcrumbs()}*/}
         {/*</Breadcrumb>*/}
