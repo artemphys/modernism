@@ -7,25 +7,21 @@ import { RouteComponentProps } from "react-router";
 import { columns } from "../../mock";
 
 interface Props extends RouteComponentProps {
-  getMuseumsTable: (search?: string) => any;
-  table_data: any;
+  getMuseumsTable: () => any;
   museums: any;
 }
 
 export class MuseumsPage extends Component<Props> {
+  componentDidMount() {
+    this.props.getMuseumsTable();
+  }
   render() {
-    const { getMuseumsTable, museums } = this.props;
+    const { museums } = this.props;
     console.log(this.props);
     return (
       <div>
         <h1>museums</h1>
-        <Table
-          getData={getMuseumsTable}
-          columns={columns}
-          dataSource={museums.data}
-          error={museums.error}
-          isFetching={museums.isFetching}
-        />
+        <Table columns={columns} dataSource={museums.data} />
       </div>
     );
   }
