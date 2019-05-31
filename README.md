@@ -15,3 +15,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
  1. open shell as Admin
  2. run in mongodb path `mongod --directoryperdb --dbpath C:\mongodb\data\db --logpath C:\mongodb\log\mongo.log --logappend`
  2. `npm run mongo`
+
+### All info from https://en.wikipedia.org/wiki/Modern_art

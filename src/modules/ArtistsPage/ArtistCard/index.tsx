@@ -16,7 +16,7 @@ export class ArtistCard extends Component<Props> {
   render() {
     const { id, name, imgUrl } = this.props.card;
     return (
-      <Card hoverable cover={<img src={imgUrl} />}>
+      <Card hoverable cover={<img alt={name} src={imgUrl} />} size="small">
         <Meta title={name} />
         <Link to={`/artists/${id}`}>More...</Link>
       </Card>

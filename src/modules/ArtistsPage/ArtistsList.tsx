@@ -49,8 +49,8 @@ export class ArtistsList extends Component<Props> {
       <div>
         <MainTabs history={history} />
         <div className="toolsContainer">
-          <Row>
-            <Col span={18} />
+          <Row gutter={16}>
+            <Col span={10} />
             <Col span={6}>
               <Search
                 placeholder="Search"
@@ -67,8 +67,8 @@ export class ArtistsList extends Component<Props> {
             <span>No data available</span>
           ) : (
             <Row gutter={16}>
-              {data.map((item: any, id: string) => (
-                <Col span={5} key={id}>
+              {data.map((item: any, i: number) => (
+                <Col span={5} key={i}>
                   <ArtistCard card={item} />
                 </Col>
               ))}
