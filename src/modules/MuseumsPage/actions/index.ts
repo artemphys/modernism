@@ -3,7 +3,7 @@ import {
   GET_MUSEUM_SUCCESS,
   GET_MUSEUM_FAIL
 } from "../../../constants";
-import { table_data } from "../../../mock";
+import { MUSEUMS } from "../../../mock";
 
 export const getMuseums = () => async (dispatch: any) => {
   dispatch({
@@ -13,7 +13,7 @@ export const getMuseums = () => async (dispatch: any) => {
   try {
     dispatch({
       type: GET_MUSEUM_SUCCESS,
-      payload: table_data
+      payload: MUSEUMS
     });
   } catch (e) {
     dispatch({

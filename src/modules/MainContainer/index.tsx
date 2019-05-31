@@ -49,10 +49,10 @@ export class App extends Component<Props> {
       <Layout style={{ minHeight: "100vh" }}>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <Link to="/museums" className="App-link">
+            Museums
+          </Link>
         </header>
-        <a>
-          <Link to="/museums">Museums</Link>
-        </a>
         {/*<Breadcrumb style={{ margin: "16px 0" }}>*/}
         {/*{this.renderBreadcrumbs()}*/}
         {/*</Breadcrumb>*/}

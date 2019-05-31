@@ -4,7 +4,9 @@ import { Table } from "antd";
 import { getMuseums } from "./actions";
 import { RouteComponentProps } from "react-router";
 
-import { columns } from "../../mock";
+import { MUSEUM_TABLE_COLUMNS } from "../../mock";
+import { LoadingFailed } from "../Common/LoadingFailed";
+import { Loading } from "../Common/Loading";
 
 interface Props extends RouteComponentProps {
   getMuseumsTable: () => any;
@@ -18,10 +20,19 @@ class MuseumsPage extends Component<Props> {
 
   render() {
     const { museums } = this.props;
+
+    if (museums.error) {
+      return <LoadingFailed />;
+    }
+
+    if (museums.isFetching) {
+      return <Loading />;
+    }
+
     return (
       <div>
-        <h1>museums</h1>
-        <Table columns={columns} dataSource={museums.data} />
+        <h1>Museums</h1>
+        <Table columns={MUSEUM_TABLE_COLUMNS} dataSource={museums.data} />
       </div>
     );
   }

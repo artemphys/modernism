@@ -59,42 +59,63 @@ export const DATA = [
   }
 ];
 
-export const columns = [
+export const MUSEUM_TABLE_COLUMNS = [
   {
-    title: "artistName",
-    dataIndex: "artistName",
-    key: "artistName"
+    title: "ArtistName",
+    dataIndex: "ArtistName",
+    key: "ArtistName"
   },
   {
-    title: "genre",
-    dataIndex: "genre",
-    key: "genre"
+    title: "Genre",
+    dataIndex: "Genre",
+    key: "Genre"
   },
   {
-    title: "country",
-    dataIndex: "country",
-    key: "country"
+    title: "Country",
+    dataIndex: "Country",
+    key: "Country"
   },
   {
-    title: "address",
-    dataIndex: "address",
-    key: "address"
+    title: "Address",
+    dataIndex: "Address",
+    key: "Address"
   }
 ];
 
-export const table_data = [
+export const MUSEUMS = [
   {
     key: "1",
-    artistName: "Vincent Willem van Gogh",
-    genre: "Post-Impressionism",
-    country: "HET KRÖLLER-MÜLLER MUSEUM",
-    address: "Kröller-Müller Museum Houtkampweg 6 6731 AW Otterlo"
+    ArtistName: "Vincent Willem van Gogh",
+    Genre: "Post-Impressionism",
+    Country: "Holland",
+    Address: "Kröller-Müller Museum Houtkampweg 6 6731 AW Otterlo"
   },
   {
     key: "2",
-    artistName: "Dalí Salvador",
-    genre: "Surrealism",
-    country: "Spain",
-    address: "Gala-Salvador Dalí Square, 5 E-17600 Figueres. Catalonia"
+    ArtistName: "Dalí Salvador",
+    Genre: "Surrealism",
+    Country: "Spain",
+    Address: "Gala-Salvador Dalí Square, 5 E-17600 Figueres. Catalonia"
+  },
+  {
+    key: "3",
+    ArtistName: "Vincent Willem van Gogh",
+    Genre: "Post-Impressionism",
+    Country: "Holland",
+    Address: "Museumplein 6, Amsterdam"
+  },
+  {
+    key: "4",
+    ArtistName: "Pablo Picasso",
+    Genre: "Cubism",
+    Country: "Spain",
+    Address: "Picasso Museum Carrer Montcada, 15-23, 08003 Barcelona"
+  },
+  {
+    key: "5",
+    ArtistName: "Pablo Picasso",
+    Genre: "Cubism",
+    Country: "France",
+    Address: "5 rue de Thorigny 75003 Paris"
   }
 ];
