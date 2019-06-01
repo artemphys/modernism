@@ -36,6 +36,10 @@ export class ArtistsList extends Component<Props> {
 
   render() {
     const { data, error, isFetching, history } = this.props;
+    const colsNumber = 4;
+    const createRow = [...Array(Math.ceil(data.length / colsNumber))].map((n, i) =>
+        data.slice(i * colsNumber, (i + 1) * colsNumber)
+      );
 
     if (error) {
       return <LoadingFailed />;
@@ -66,14 +70,17 @@ export class ArtistsList extends Component<Props> {
           {!data || !data.length ? (
             <span>No data available</span>
           ) : (
-            <Row gutter={16}>
-              {data.map((item: any, i: number) => (
-                <Col span={5} key={i}>
-                  <ArtistCard card={item} />
-                </Col>
-              ))}
-            </Row>
-          )}
+            {createRow.map((createRowEl: any, i: number) => (
+                <Row gutter={16} key ={i}>
+                  {createRowEl.map((item: any, i: number ) => (
+                    <Col span={colsNumber} key={i}>
+                      <ArtistCard card={item}/>
+                    </Col>
+                  ))}
+                </Row>
+              ))
+            })
+          }
         </section>
       </div>
     );
