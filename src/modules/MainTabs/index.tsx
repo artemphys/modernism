@@ -19,7 +19,6 @@ export class MainTabs extends Component<Props> {
     this.props.history.location.pathname.includes("artists") ? "1" : "2";
 
   render() {
-    console.log(this.props.history);
     return (
       <Tabs onChange={this.onChange} activeKey={this.getActiveTab()}>
         <TabPane tab="Artists" key="1" />

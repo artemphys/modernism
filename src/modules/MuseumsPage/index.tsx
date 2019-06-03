@@ -1,45 +1,52 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Table } from "antd";
+import { getMuseums } from "./actions";
+import { RouteComponentProps } from "react-router";
 
-const columns = [
-  {
-    title: "artistName",
-    dataIndex: "artistName",
-    key: "artistName"
-  },
-  {
-    title: "genre",
-    dataIndex: "genre",
-    key: "genre"
-  },
-  {
-    title: "country",
-    dataIndex: "country",
-    key: "country"
-  },
-  {
-    title: "address",
-    dataIndex: "address",
-    key: "address"
-  }
-];
+import { MUSEUM_TABLE_COLUMNS } from "../../mock";
+import { LoadingFailed } from "../Common/LoadingFailed";
+import { Loading } from "../Common/Loading";
 
-const data = [
-  {
-    key: "",
-    artistName: "",
-    genre: "",
-    country: "",
-    address: ""
+interface Props extends RouteComponentProps {
+  getMuseumsTable: () => any;
+  museums: any;
+}
+
+class MuseumsPage extends Component<Props> {
+  componentDidMount() {
+    this.props.getMuseumsTable();
   }
-];
-export class MuseumsPage extends Component {
+
   render() {
+    const { museums } = this.props;
+
+    if (museums.error) {
+      return <LoadingFailed />;
+    }
+
+    if (museums.isFetching) {
+      return <Loading />;
+    }
+
     return (
       <div>
-        <h1>museums</h1>
-        <Table columns={columns} dataSource={data} />
+        <h1>Museums</h1>
+        <Table columns={MUSEUM_TABLE_COLUMNS} dataSource={museums.data} />
       </div>
     );
   }
 }
+
+const mapStateToProps = (store: any) => ({
+  museums: store.museums
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getMuseumsTable: () => dispatch(getMuseums())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MuseumsPage);

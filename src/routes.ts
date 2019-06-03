@@ -1,10 +1,10 @@
 import { App } from "./modules/MainContainer";
 import { RouteConfig } from "react-router-config";
 import ArtistsPage from "./modules/ArtistsPage";
+import { GenrePage } from "./modules/GenresPage/GenrePage";
+import MuseumsPage from "./modules/MuseumsPage";
 import { ArtistPage } from "./modules/ArtistsPage/ArtistPage";
 import { GenresPage } from "./modules/GenresPage";
-import { GenrePage } from "./modules/GenresPage/GenrePage";
-import { MuseumsPage } from "./modules/MuseumsPage";
 
 export const routes = <Array<RouteConfig>>[
   {
