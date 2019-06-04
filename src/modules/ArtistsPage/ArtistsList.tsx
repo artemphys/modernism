@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Row, Col, Input } from "antd";
+import * as R from "ramda";
 import { ArtistCard } from "./ArtistCard";
 import { MainTabs } from "../MainTabs";
 import { Loading } from "../Common/Loading";
 import { LoadingFailed } from "../Common/LoadingFailed";
 import "./ArtistsPage.css";
+
 const Search = Input.Search;
 
 interface Props {
@@ -33,6 +35,8 @@ export class ArtistsList extends Component<Props> {
       ...(value.length && { search: value })
     });
   };
+
+  createRows = (data: Array<any>) => R.splitEvery(4, data);
 
   render() {
     const { data, error, isFetching, history } = this.props;
@@ -66,13 +70,17 @@ export class ArtistsList extends Component<Props> {
           {!data || !data.length ? (
             <span>No data available</span>
           ) : (
-            <Row gutter={16}>
-              {data.map((item: any, i: number) => (
-                <Col span={5} key={i}>
-                  <ArtistCard card={item} />
-                </Col>
+            <div>
+              {[...this.createRows(data)].map((row: Array<any>, i: number) => (
+                <Row gutter={16} key={i}>
+                  {row.map((item: any, i: number) => (
+                    <Col span={4} key={i}>
+                      <ArtistCard card={item} />
+                    </Col>
+                  ))}
+                </Row>
               ))}
-            </Row>
+            </div>
           )}
         </section>
       </div>

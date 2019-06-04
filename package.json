@@ -50,6 +50,7 @@
     "postcss-preset-env": "6.5.0",
     "postcss-safe-parser": "4.0.1",
     "qs": "^6.7.0",
+    "ramda": "^0.26.1",
     "react": "^16.8.5",
     "react-app-polyfill": "^0.2.2",
     "react-dev-utils": "^8.0.0",
@@ -136,6 +137,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "@types/ramda": "github:types/npm-ramda#dist",
     "babel-plugin-import": "^1.11.0",
     "babel-preset-react-app": "^7.0.2",
     "eslint": "^5.12.0",
