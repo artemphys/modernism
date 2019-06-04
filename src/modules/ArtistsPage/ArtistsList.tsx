@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Row, Col, Input } from "antd";
+import * as R from "ramda";
 import { ArtistCard } from "./ArtistCard";
 import { MainTabs } from "../MainTabs";
 import { Loading } from "../Common/Loading";
 import { LoadingFailed } from "../Common/LoadingFailed";
 import "./ArtistsPage.css";
+
 const Search = Input.Search;
 
 interface Props {
@@ -34,12 +36,10 @@ export class ArtistsList extends Component<Props> {
     });
   };
 
+  createRows = (data: Array<any>) => R.splitEvery(4, data);
+
   render() {
     const { data, error, isFetching, history } = this.props;
-    const colsNumber = 4;
-    const createRow = [...Array(Math.ceil(data.length / colsNumber))].map((n, i) =>
-        data.slice(i * colsNumber, (i + 1) * colsNumber)
-      );
 
     if (error) {
       return <LoadingFailed />;
@@ -70,17 +70,18 @@ export class ArtistsList extends Component<Props> {
           {!data || !data.length ? (
             <span>No data available</span>
           ) : (
-            {createRow.map((createRowEl: any, i: number) => (
-                <Row gutter={16} key ={i}>
-                  {createRowEl.map((item: any, i: number ) => (
-                    <Col span={colsNumber} key={i}>
-                      <ArtistCard card={item}/>
+            <div>
+              {[...this.createRows(data)].map((row: Array<any>, i: number) => (
+                <Row gutter={16} key={i}>
+                  {row.map((item: any, i: number) => (
+                    <Col span={4} key={i}>
+                      <ArtistCard card={item} />
                     </Col>
                   ))}
                 </Row>
-              ))
-            })
-          }
+              ))}
+            </div>
+          )}
         </section>
       </div>
     );
