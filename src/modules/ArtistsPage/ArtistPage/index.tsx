@@ -1,20 +1,6 @@
 import React, { Component } from "react";
-import {
-  Avatar,
-  Tag,
-  Icon,
-  Input,
-  Col,
-  Row,
-  Collapse,
-  Carousel
-} from "antd";
-import {
-  GET_ARTIST_DATA_COVERIMGURL,
-  GET_ARTIST_DATA_DESCRIPTION,
-  GET_ARTIST_DATA_GALLERY,
-  GET_ARTIST_DATA_ID
-} from "../../../mock";
+import { Avatar, Tag, Icon, Input, Col, Row, Collapse, Carousel } from "antd";
+import { ARTIST_DATA } from "../../../mock";
 
 import "./ArtistPage.css";
 
@@ -99,7 +85,7 @@ export class ArtistPage extends Component {
             <Row gutter={16}>
               <Col span={8}>
                 <Avatar
-                  src={GET_ARTIST_DATA_COVERIMGURL}
+                  src={ARTIST_DATA.coverImgUrl}
                   shape="square"
                   style={{ float: "left", width: "100%", height: "500px" }}
                 />
@@ -111,8 +97,8 @@ export class ArtistPage extends Component {
                     <Icon type="caret-right" rotate={isActive ? 90 : 0} />
                   )}
                 >
-                  <Panel header={GET_ARTIST_DATA_ID} key="1" style={panelStyle}>
-                    <p> {GET_ARTIST_DATA_DESCRIPTION}</p>
+                  <Panel header={ARTIST_DATA.id} key="1" style={panelStyle}>
+                    <p> {ARTIST_DATA.description}</p>
                   </Panel>
                 </Collapse>
               </Col>
@@ -120,9 +106,8 @@ export class ArtistPage extends Component {
           </section>
           <section className="blockBackground">
             <div className="gallery">
-              <h1>Images gallery</h1>
               <Carousel autoplay>
-                {GET_ARTIST_DATA_GALLERY.map((item, id) => (
+                {ARTIST_DATA.gallery.map((item, id) => (
                   <div key={id} className="galleryItem">
                     <img src={item} style={{ width: "100%" }} />
                   </div>

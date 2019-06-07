@@ -11,9 +11,6 @@
   margin: 0 auto;
 }
 
-.gallery h1 {
-  text-align: center;
-}
 .galleryItem {
   height: 500px;
   display: inline-flex !important;
