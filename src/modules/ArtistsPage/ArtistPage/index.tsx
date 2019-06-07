@@ -54,6 +54,23 @@ export class ArtistPage extends Component {
         <div className="containerMain">
           <div className="tags-block">
             {tags.map(tag => (
+              // const isLongTag = tag.length > 20;
+              // const tagElem = (
+              //   <Tag
+              //     key={tag}
+              //     closable={true}
+              //     onClose={() => this.removeTag(tag)}
+              //   >
+              //     {isLongTag ? `${tag.slice(0, 20)}...` : tag}
+              //   </Tag>
+              // );
+              // return isLongTag ? (
+              //   <Tooltip title={tag} key={tag}>
+              //     {tagElem}
+              //   </Tooltip>
+              // ) : (
+              //   tagElem
+              // );
               <Tag
                 key={tag}
                 closable={true}
