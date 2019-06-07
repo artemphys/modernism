@@ -1,15 +1,26 @@
 .tags-block {
   margin: 40px;
 }
-.description {
-  margin: 0 40px 0 160px;
+
+.blockBackground {
+  background: #fafafa;
 }
-.description h1 {
+
+.gallery {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.gallery h1 {
   text-align: center;
 }
-.images-gallery {
-  margin: 30px;
+.galleryItem {
+  height: 500px;
+  display: inline-flex !important;
+  background: #fafafa;
 }
-.images-gallery h1 {
-  text-align: center;
+
+.gallery .galleryItem img {
+  display: flex;
+  align-self: center;
 }
