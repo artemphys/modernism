@@ -1,0 +1,27 @@
+.tags-block {
+  margin: 40px;
+}
+
+.blockBackground {
+  background: #fafafa;
+}
+
+.artistDescription {
+  border-left: 1px solid #e8e8e8;
+  padding-left: 20px;
+}
+
+.gallery {
+  width: 400px;
+}
+
+.galleryItem {
+  height: 500px;
+  display: inline-flex !important;
+  background: #fafafa;
+}
+
+.gallery .galleryItem img {
+  display: flex;
+  align-self: center;
+}

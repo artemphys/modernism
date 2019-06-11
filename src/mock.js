@@ -119,3 +119,69 @@ export const MUSEUMS = [
     Address: "5 rue de Thorigny 75003 Paris"
   }
 ];
+
+export const ARTIST_DATA = {
+  id: "Vincent Willem van Gogh",
+  genre: "Post-Impressionism",
+  coverImgUrl:
+    "https://upload.wikimedia.org/wikipedia/commons/4/4c/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg",
+  gallery: [
+    "https://upload.wikimedia.org/wikipedia/commons/4/46/Vincent_Willem_van_Gogh_127.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/1/1e/Portrait_of_Dr._Gachet.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d3/Vincent_Van_Gogh_-_Wheatfield_with_Crows.jpg"
+  ],
+  description:
+    "Vincent Willem van Gogh ( 30 March 1853 – 29 July 1890) was a Dutch\n" +
+    "            post-impressionist painter who is among the most famous and\n" +
+    "            influential figures in the history of Western art. In just over a\n" +
+    "            decade he created about 2,100 artworks, including around 860 oil\n" +
+    "            paintings, most of them in the last two years of his life. They\n" +
+    "            include landscapes, still lifes, portraits and self-portraits, and\n" +
+    "            are characterised by bold colours and dramatic, impulsive and\n" +
+    "            expressive brushwork that contributed to the foundations of modern\n" +
+    "            art. Born into an upper-middle-class family, Van Gogh drew as a\n" +
+    "            child and was serious, quiet and thoughtful. As a young man he\n" +
+    "            worked as an art dealer, often travelling, but became depressed\n" +
+    "            after he was transferred to London. He turned to religion and spent\n" +
+    "            time as a Protestant missionary in southern Belgium. He drifted in\n" +
+    "            ill health and solitude before taking up painting in 1881, having\n" +
+    "            moved back home with his parents. His younger brother Theo supported\n" +
+    "            him financially, and the two kept up a long correspondence by\n" +
+    "            letter. In 1886, he moved to Paris, where he met members of the\n" +
+    "            avant-garde, including Émile Bernard and Paul Gauguin, who were\n" +
+    "            reacting against the Impressionist sensibility. As his work\n" +
+    "            developed he created a new approach to still lifes and local\n" +
+    "            landscapes. His paintings grew brighter in colour as he developed a\n" +
+    "            style that became fully realised. His subject matter began to\n" +
+    "            include series of olive trees, wheat fields and sunflowers. Van Gogh\n" +
+    "            suffered from psychotic episodes and delusions and though he worried\n" +
+    "            about his mental stability, he often neglected his physical health,\n" +
+    "            did not eat properly and drank heavily. His friendship with Gauguin\n" +
+    "            ended after a confrontation with a razor when, in a rage, he severed\n" +
+    "            part of his own left ear. He spent time in psychiatric hospitals,\n" +
+    "            including a period at Saint-Rémy. After he discharged himself and\n" +
+    "            moved to the Auberge Ravoux near Paris, he came under the care of\n" +
+    "            the homeopathic doctor Paul Gachet. His depression continued and on\n" +
+    "            27 July 1890, Van Gogh shot himself in the chest with a Lefaucheux\n" +
+    "            revolver. He became famous after his suicide, and exists in the\n" +
+    "            public imagination as the quintessential misunderstood genius. His\n" +
+    "            reputation began to grow in the early 20th century as elements of\n" +
+    "            his painting style came to be incorporated by the Fauves and German\n" +
+    "            Expressionists. He attained widespread critical, commercial and\n" +
+    "            popular success over the ensuing decades, and is remembered as an\n" +
+    "            important but tragic painter, whose troubled personality typifies\n" +
+    "            the romantic ideal of the tortured artist. Today, Van Gogh's works\n" +
+    "            are among the world's most expensive paintings to have ever sold at\n" +
+    "            auction, and his legacy is honoured by a museum in his name, the Van\n" +
+    "            Gogh Museum in Amsterdam, which holds the world's largest collection\n" +
+    "            of his paintings and drawings.",
+  comments: [
+    {
+      author: "Ivan Vasiliev",
+      content:
+        "Over the weekend, I had the extreme pleasure of seeing Van Gog. I descovered very interesting tendence must to be remarked  Van Gogh’s shift from his darker early works which use little color to his later works in which he embraced color and often demonstrated the dramatic effects of using complementary colors."
+    },
+    { author: "Den Brain", content: "None" }
+  ],
+  tags: []
+};
