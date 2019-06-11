@@ -1,6 +1,19 @@
 import React, { Component } from "react";
-import { Avatar, Tag, Icon, Input, Col, Row, Collapse, Carousel } from "antd";
+import {
+  Avatar,
+  Tag,
+  Icon,
+  Input,
+  Col,
+  Row,
+  Collapse,
+  Carousel,
+  Comment,
+  Tooltip,
+  List
+} from "antd";
 import { ARTIST_DATA } from "../../../mock";
+import moment from "moment";
 
 import "./ArtistPage.css";
 
@@ -17,7 +30,10 @@ export class ArtistPage extends Component {
   state = {
     tags: ["Tag 1", "Tag 2", "Tag 3", "Tag 4"],
     inputVisible: false,
-    inputValue: ""
+    inputValue: "",
+    likes: 0,
+    dislikes: 0,
+    action: null
   };
 
   removeTag = (removedTag: any) => {
@@ -46,8 +62,55 @@ export class ArtistPage extends Component {
     });
   };
 
+  addLike = () => {
+    this.setState({
+      likes: 1,
+      dislikes: 0,
+      action: "liked"
+    });
+  };
+
+  addDislike = () => {
+    this.setState({
+      likes: 0,
+      dislikes: 1,
+      action: "disliked"
+    });
+  };
+
   render() {
-    const { tags, inputVisible, inputValue } = this.state;
+    const {
+      tags,
+      inputVisible,
+      inputValue,
+      action,
+      dislikes,
+      likes
+    } = this.state;
+
+    const bottomBar = [
+      <span>
+        <Tooltip title="Like">
+          <Icon
+            type="like"
+            theme={action === "liked" ? "filled" : "outlined"}
+            onClick={this.addLike}
+          />
+        </Tooltip>
+        <span style={{ paddingLeft: 8, cursor: "auto" }}>{likes}</span>
+      </span>,
+      <span>
+        <Tooltip title="Dislike">
+          <Icon
+            type="dislike"
+            theme={action === "disliked" ? "filled" : "outlined"}
+            onClick={this.addDislike}
+          />
+        </Tooltip>
+        <span style={{ paddingLeft: 8, cursor: "auto" }}>{dislikes}</span>
+      </span>,
+      <span>Reply to</span>
+    ];
 
     return (
       <div>
@@ -98,22 +161,46 @@ export class ArtistPage extends Component {
                   )}
                 >
                   <Panel header={ARTIST_DATA.id} key="1" style={panelStyle}>
-                    <p> {ARTIST_DATA.description}</p>
+                    <p className="artistDescription">
+                      {" "}
+                      {ARTIST_DATA.description}
+                    </p>
                   </Panel>
                 </Collapse>
               </Col>
             </Row>
           </section>
           <section className="blockBackground">
-            <div className="gallery">
-              <Carousel autoplay>
-                {ARTIST_DATA.gallery.map((item, id) => (
-                  <div key={id} className="galleryItem">
-                    <img src={item} style={{ width: "100%" }} />
-                  </div>
-                ))}
-              </Carousel>
-            </div>
+            <Row gutter={16}>
+              <Col span={16}>
+                <List
+                  className="comment-list"
+                  header={`${ARTIST_DATA.comments.length} replies`}
+                  itemLayout="horizontal"
+                  dataSource={ARTIST_DATA.comments}
+                  renderItem={(item: any) => (
+                    <li>
+                      <Comment
+                        actions={bottomBar}
+                        author={item.author}
+                        content={item.content}
+                      />
+                    </li>
+                  )}
+                />
+              </Col>
+              <Col span={8}>
+                <div className="gallery">
+                  <Carousel autoplay>
+                    {ARTIST_DATA.gallery.map((item, id) => (
+                      <div key={id} className="galleryItem">
+                        <img src={item} style={{ width: "100%" }} />
+                      </div>
+                    ))}
+                  </Carousel>
+                </div>
+              </Col>
+            </Row>
           </section>
         </div>
       </div>

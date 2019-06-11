@@ -6,9 +6,13 @@
   background: #fafafa;
 }
 
+.artistDescription {
+  border-left: 1px solid #e8e8e8;
+  padding-left: 20px;
+}
+
 .gallery {
   width: 400px;
-  margin: 0 auto;
 }
 
 .galleryItem {

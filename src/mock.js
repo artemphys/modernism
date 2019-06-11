@@ -175,6 +175,13 @@ export const ARTIST_DATA = {
     "            auction, and his legacy is honoured by a museum in his name, the Van\n" +
     "            Gogh Museum in Amsterdam, which holds the world's largest collection\n" +
     "            of his paintings and drawings.",
-  comments: [],
+  comments: [
+    {
+      author: "Ivan Vasiliev",
+      content:
+        "Over the weekend, I had the extreme pleasure of seeing Van Gog. I descovered very interesting tendence must to be remarked  Van Gogh’s shift from his darker early works which use little color to his later works in which he embraced color and often demonstrated the dramatic effects of using complementary colors."
+    },
+    { author: "Den Brain", content: "None" }
+  ],
   tags: []
 };
