@@ -9,11 +9,9 @@ import {
   Collapse,
   Carousel,
   Comment,
-  Tooltip,
   List
 } from "antd";
 import { ARTIST_DATA } from "../../../mock";
-import moment from "moment";
 
 import "./ArtistPage.css";
 
@@ -30,10 +28,7 @@ export class ArtistPage extends Component {
   state = {
     tags: ["Tag 1", "Tag 2", "Tag 3", "Tag 4"],
     inputVisible: false,
-    inputValue: "",
-    likes: 0,
-    dislikes: 0,
-    action: null
+    inputValue: ""
   };
 
   removeTag = (removedTag: any) => {
@@ -62,55 +57,8 @@ export class ArtistPage extends Component {
     });
   };
 
-  addLike = () => {
-    this.setState({
-      likes: 1,
-      dislikes: 0,
-      action: "liked"
-    });
-  };
-
-  addDislike = () => {
-    this.setState({
-      likes: 0,
-      dislikes: 1,
-      action: "disliked"
-    });
-  };
-
   render() {
-    const {
-      tags,
-      inputVisible,
-      inputValue,
-      action,
-      dislikes,
-      likes
-    } = this.state;
-
-    const bottomBar = [
-      <span>
-        <Tooltip title="Like">
-          <Icon
-            type="like"
-            theme={action === "liked" ? "filled" : "outlined"}
-            onClick={this.addLike}
-          />
-        </Tooltip>
-        <span style={{ paddingLeft: 8, cursor: "auto" }}>{likes}</span>
-      </span>,
-      <span>
-        <Tooltip title="Dislike">
-          <Icon
-            type="dislike"
-            theme={action === "disliked" ? "filled" : "outlined"}
-            onClick={this.addDislike}
-          />
-        </Tooltip>
-        <span style={{ paddingLeft: 8, cursor: "auto" }}>{dislikes}</span>
-      </span>,
-      <span>Reply to</span>
-    ];
+    const { tags, inputVisible, inputValue } = this.state;
 
     return (
       <div>
@@ -180,11 +128,7 @@ export class ArtistPage extends Component {
                   dataSource={ARTIST_DATA.comments}
                   renderItem={(item: any) => (
                     <li>
-                      <Comment
-                        actions={bottomBar}
-                        author={item.author}
-                        content={item.content}
-                      />
+                      <Comment author={item.author} content={item.content} />
                     </li>
                   )}
                 />
