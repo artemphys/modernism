@@ -1,16 +1,6 @@
 import React, { Component } from "react";
-import {
-  Avatar,
-  Tag,
-  Icon,
-  Input,
-  Col,
-  Row,
-  Collapse,
-  Carousel,
-  Comment,
-  List
-} from "antd";
+import { Avatar, Tag, Icon, Input, Col, Row, Collapse, Carousel } from "antd";
+import { ArtistComments } from "./Comments";
 import { ARTIST_DATA } from "../../../mock";
 
 import "./ArtistPage.css";
@@ -121,17 +111,7 @@ export class ArtistPage extends Component {
           <section className="blockBackground">
             <Row gutter={16}>
               <Col span={16}>
-                <List
-                  className="comment-list"
-                  header={`${ARTIST_DATA.comments.length} replies`}
-                  itemLayout="horizontal"
-                  dataSource={ARTIST_DATA.comments}
-                  renderItem={(item: any) => (
-                    <li>
-                      <Comment author={item.author} content={item.content} />
-                    </li>
-                  )}
-                />
+                <ArtistComments />
               </Col>
               <Col span={8}>
                 <div className="gallery">
