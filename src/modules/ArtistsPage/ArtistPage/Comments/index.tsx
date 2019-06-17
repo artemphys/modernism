@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-
 import { Comment, List } from "antd";
-import { ARTIST_DATA } from "../../../../mock";
 
-export class ArtistComments extends Component {
+interface Props {
+  data: any;
+}
+
+export class CommentsList extends Component<Props> {
   render() {
+    const { data } = this.props;
+
     return (
       <List
         className="comment-list"
-        header={`${ARTIST_DATA.comments.length} replies`}
+        header={`${data.length} replies`}
         itemLayout="horizontal"
-        dataSource={ARTIST_DATA.comments}
+        dataSource={data}
         renderItem={(item: any) => (
           <li>
             <Comment author={item.author} content={item.content} />

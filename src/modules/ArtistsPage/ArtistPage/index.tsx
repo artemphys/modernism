@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import { RouteComponentProps } from "react-router";
+import { connect } from "react-redux";
+import { CommentsList } from "./Comments";
 import { Avatar, Tag, Icon, Input, Col, Row, Collapse, Carousel } from "antd";
-import { ArtistComments } from "./Comments";
-import { ARTIST_DATA } from "../../../mock";
+import { getArtist } from "./actions";
+import { Loading } from "../../Common/Loading";
+import { LoadingFailed } from "../../Common/LoadingFailed";
 
 import "./ArtistPage.css";
 
@@ -14,12 +18,21 @@ const panelStyle = {
   overflow: "hidden"
 };
 
-export class ArtistPage extends Component {
+interface Props extends RouteComponentProps {
+  artist: any;
+  getArtistPage: () => any;
+}
+
+class ArtistPage extends Component<Props> {
   state = {
     tags: ["Tag 1", "Tag 2", "Tag 3", "Tag 4"],
     inputVisible: false,
     inputValue: ""
   };
+
+  componentDidMount() {
+    this.props.getArtistPage();
+  }
 
   removeTag = (removedTag: any) => {
     const tags = this.state.tags.filter(tag => tag !== removedTag);
@@ -49,6 +62,21 @@ export class ArtistPage extends Component {
 
   render() {
     const { tags, inputVisible, inputValue } = this.state;
+    const { artist } = this.props;
+
+    if (!artist.data) {
+      return null;
+    }
+
+    if (artist.error) {
+      return <LoadingFailed />;
+    }
+
+    if (artist.isFetching) {
+      return <Loading />;
+    }
+
+    const { id, coverImgUrl, description, gallery, comments } = artist.data;
 
     return (
       <div>
@@ -86,7 +114,7 @@ export class ArtistPage extends Component {
             <Row gutter={16}>
               <Col span={8}>
                 <Avatar
-                  src={ARTIST_DATA.coverImgUrl}
+                  src={coverImgUrl}
                   shape="square"
                   style={{ float: "left", width: "100%", height: "500px" }}
                 />
@@ -98,11 +126,8 @@ export class ArtistPage extends Component {
                     <Icon type="caret-right" rotate={isActive ? 90 : 0} />
                   )}
                 >
-                  <Panel header={ARTIST_DATA.id} key="1" style={panelStyle}>
-                    <p className="artistDescription">
-                      {" "}
-                      {ARTIST_DATA.description}
-                    </p>
+                  <Panel header={id} key="1" style={panelStyle}>
+                    <p className="artistDescription"> {description}</p>
                   </Panel>
                 </Collapse>
               </Col>
@@ -111,12 +136,12 @@ export class ArtistPage extends Component {
           <section className="blockBackground">
             <Row gutter={16}>
               <Col span={16}>
-                <ArtistComments />
+                <CommentsList data={comments} />
               </Col>
               <Col span={8}>
                 <div className="gallery">
                   <Carousel autoplay>
-                    {ARTIST_DATA.gallery.map((item, id) => (
+                    {gallery.map((item: any, id: any) => (
                       <div key={id} className="galleryItem">
                         <img src={item} style={{ width: "100%" }} />
                       </div>
@@ -131,3 +156,16 @@ export class ArtistPage extends Component {
     );
   }
 }
+
+const mapStateToProps = (store: any) => ({
+  artist: store.artist
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getArtistPage: () => dispatch(getArtist())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ArtistPage);
