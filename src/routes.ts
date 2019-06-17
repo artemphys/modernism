@@ -3,7 +3,7 @@ import { RouteConfig } from "react-router-config";
 import ArtistsPage from "./modules/ArtistsPage";
 import { GenrePage } from "./modules/GenresPage/GenrePage";
 import MuseumsPage from "./modules/MuseumsPage";
-import { ArtistPage } from "./modules/ArtistsPage/ArtistPage";
+import ArtistPage from "./modules/ArtistsPage/ArtistPage";
 import { GenresPage } from "./modules/GenresPage";
 
 export const routes = <Array<RouteConfig>>[
