@@ -59,69 +59,61 @@ export const DATA = [
   }
 ];
 
-export const MUSEUM_TABLE_COLUMNS = [
-  {
-    title: "ArtistName",
-    dataIndex: "ArtistName",
-    key: "ArtistName"
-  },
-  {
-    title: "Genre",
-    dataIndex: "Genre",
-    key: "Genre"
-  },
-  {
-    title: "Country",
-    dataIndex: "Country",
-    key: "Country"
-  },
-  {
-    title: "Address",
-    dataIndex: "Address",
-    key: "Address"
-  }
-];
-
 export const MUSEUMS = [
   {
     key: "1",
-    ArtistName: "Vincent Willem van Gogh",
-    Genre: "Post-Impressionism",
-    Country: "Holland",
-    Address: "Kröller-Müller Museum Houtkampweg 6 6731 AW Otterlo"
+    artistName: "Vincent Willem van Gogh",
+    artistId: "Vincent-Willem-van-Gogh",
+    genre: "Post Impressionism",
+    genreId: "Post-Impressionism",
+    country: "Holland",
+    museumId: "Kröller-Müller-Museum",
+    address: "Kröller-Müller Museum Houtkampweg 6 6731 AW Otterlo"
   },
   {
     key: "2",
-    ArtistName: "Dalí Salvador",
-    Genre: "Surrealism",
-    Country: "Spain",
-    Address: "Gala-Salvador Dalí Square, 5 E-17600 Figueres. Catalonia"
+    artistName: "Dalí Salvador",
+    artistId: "Dalí-Salvador",
+    genre: "Surrealism",
+    genreId: "Surrealism",
+    country: "Spain",
+    museumId: "Salvador-Dalí-Museum",
+    address: "Gala-Salvador Dalí Square, 5 E-17600 Figueres. Catalonia"
   },
   {
     key: "3",
-    ArtistName: "Vincent Willem van Gogh",
-    Genre: "Post-Impressionism",
-    Country: "Holland",
-    Address: "Museumplein 6, Amsterdam"
+    artistName: "Vincent Willem van Gogh",
+    artistId: "Vincent-Willem-van-Gogh",
+    genre: "Post Impressionism",
+    genreId: "Post-Impressionism",
+    country: "Holland",
+    museumId: "Van-Gogh-Museum-Amsterdam",
+    address: "Museumplein 6, Amsterdam"
   },
   {
     key: "4",
-    ArtistName: "Pablo Picasso",
-    Genre: "Cubism",
-    Country: "Spain",
-    Address: "Picasso Museum Carrer Montcada, 15-23, 08003 Barcelona"
+    artistName: "Pablo Picasso",
+    artistId: "Pablo-Picasso",
+    genre: "Cubism",
+    genreId: "Cubism",
+    country: "Spain",
+    museumId: "Picasso-Museum-Barselona",
+    address: "Picasso Museum Carrer Montcada, 15-23, 08003 Barcelona"
   },
   {
     key: "5",
-    ArtistName: "Pablo Picasso",
-    Genre: "Cubism",
-    Country: "France",
-    Address: "5 rue de Thorigny 75003 Paris"
+    artistName: "Pablo Picasso",
+    artistId: "Pablo-Picasso",
+    genre: "Cubism",
+    genreId: "Cubism",
+    country: "France",
+    museumId: "Picasso-Museum-Paris",
+    address: "5 rue de Thorigny 75003 Paris"
   }
 ];
 
 export const ARTIST_DATA = {
-  id: "Vincent Willem van Gogh",
+  id: "Vincent-Willem-van-Gogh",
   genre: "Post-Impressionism",
   coverImgUrl:
     "https://upload.wikimedia.org/wikipedia/commons/4/4c/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg",
