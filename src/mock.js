@@ -177,3 +177,11 @@ export const ARTIST_DATA = {
   ],
   tags: []
 };
+
+export const FEEDBACK_ARTIST_DICTIONARY = [
+  "Vincent Willem van Gogh",
+  "Eugene Henri Paul Gauguin",
+  "Paul Cezanne",
+  "Pablo Picasso",
+  "Wassily Kandinsky"
+];
