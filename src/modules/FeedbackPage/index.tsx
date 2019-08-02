@@ -3,6 +3,23 @@ import { Form, Select, Input, Button, List } from "antd";
 import { FEEDBACK_ARTIST_DICTIONARY } from "../../mock";
 
 import "./FeedbackPage.css";
+import {
+  ARTIST_NAME_LABEL,
+  ARTIST_NAME_PLACEHOLDER,
+  ARTIST_NAME_PROPERTY,
+  ARTIST_NAME_VALIDATION_TEXT,
+  EMAIL_LABEL,
+  EMAIL_PLACEHOLDER,
+  EMAIL_PROPERTY,
+  EMAIL_VALIDATION_TEXT,
+  MESSAGE_LABEL,
+  MESSAGE_PROPERTY,
+  MESSAGE_VALIDATION_TEXT,
+  USER_NAME_LABEL,
+  USER_NAME_PLACEHOLDER,
+  USER_NAME_PROPERTY,
+  USER_NAME_VALIDATION_TEXT
+} from "../../constants/FormConstants";
 
 interface Props {
   form: any;
@@ -28,18 +45,28 @@ class FeedbackForm extends Component<Props> {
     });
   };
 
-  // renderFeedbackItem = (item: any) => (
-  //   <div className="feedbackItem">
-  //     <div className="feedbackItem__header">
-  //       <span>{item.username} , </span>
-  //       <span>{item.email}</span>
-  //     </div>
-  //     <div className="feedbackItem__subtitle">{item.artist}</div>
-  //     <div className="feedbackItem__body">
-  //       <span>{item.message}</span>
-  //     </div>
-  //   </div>
-  // );
+  renderFeedbackItem = ({
+    username,
+    email,
+    artist,
+    message
+  }: {
+    username: string;
+    email: string;
+    artist: string;
+    message: string;
+  }) => (
+    <div className="feedbackItem">
+      <div className="feedbackItem__header">
+        <span>{username}</span>
+        <span>{email}</span>
+      </div>
+      <div className="feedbackItem__subtitle">{artist}</div>
+      <div className="feedbackItem__body">
+        <span>{message}</span>
+      </div>
+    </div>
+  );
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -50,33 +77,29 @@ class FeedbackForm extends Component<Props> {
         <div>
           <h1>Feedback form</h1>
           <Form onSubmit={this.handleSubmit} className="feedback-form">
-            <FormItem label="Your name">
-              {getFieldDecorator("username", {
-                rules: [
-                  { required: true, message: "Please input your username!" }
-                ]
-              })(<Input placeholder="username" />)}
+            <FormItem label={USER_NAME_LABEL}>
+              {getFieldDecorator(USER_NAME_PROPERTY, {
+                rules: [{ required: true, message: USER_NAME_VALIDATION_TEXT }]
+              })(<Input placeholder={USER_NAME_PLACEHOLDER} />)}
             </FormItem>
-            <FormItem label="Your e-mail">
-              {getFieldDecorator("email", {
-                rules: [
-                  { required: true, message: "Please input your E-mail!" }
-                ]
-              })(<Input placeholder="e-mail" />)}
+            <FormItem label={EMAIL_LABEL}>
+              {getFieldDecorator(EMAIL_PROPERTY, {
+                rules: [{ required: true, message: EMAIL_VALIDATION_TEXT }]
+              })(<Input placeholder={EMAIL_PLACEHOLDER} />)}
             </FormItem>
-            <FormItem label="Artist or museum name">
-              {getFieldDecorator("artist", {
+            <FormItem label={ARTIST_NAME_LABEL}>
+              {getFieldDecorator(ARTIST_NAME_PROPERTY, {
                 rules: [
-                  { required: true, message: "Please fill in this field" }
+                  { required: true, message: ARTIST_NAME_VALIDATION_TEXT }
                 ]
               })(
                 <Select
                   defaultValue=".com"
-                  placeholder="Please inter artist name"
+                  placeholder={ARTIST_NAME_PLACEHOLDER}
                 >
                   {data.map((item, i) => {
                     return (
-                      <Option value={item} key={i}>
+                      <Option value={item} key={`${i}_${item}`}>
                         {item}
                       </Option>
                     );
@@ -84,11 +107,9 @@ class FeedbackForm extends Component<Props> {
                 </Select>
               )}
             </FormItem>
-            <FormItem label="Your message">
-              {getFieldDecorator("message", {
-                rules: [
-                  { required: true, message: "Please, inter your feedback" }
-                ]
+            <FormItem label={MESSAGE_LABEL}>
+              {getFieldDecorator(MESSAGE_PROPERTY, {
+                rules: [{ required: true, message: MESSAGE_VALIDATION_TEXT }]
               })(<TextArea rows={4} />)}
             </FormItem>
             <Button
@@ -102,23 +123,10 @@ class FeedbackForm extends Component<Props> {
         </div>
         <div>
           <h1>Thanks for your information</h1>
-          <List
-            className="comment-list"
-            header={`${feedbackList.length} replies`}
-            itemLayout="horizontal"
-            dataSource={feedbackList}
-            renderItem={(item: any) => (
-              <List.Item extra={<div>{item.email}</div>}>
-                <List.Item.Meta
-                  title={item.username}
-                  description={item.artist}
-                />
-                {item.message}
-              </List.Item>
-            )}
-          />
-          {/*// TODO: code refactoring*/}
-          {/*{feedbackList.map((item: any) => this.renderFeedbackItem(item))}*/}
+          <div className="comment-list">
+            {`${feedbackList.length} replies`}
+            {feedbackList.map(this.renderFeedbackItem)}
+          </div>
         </div>
       </div>
     );
