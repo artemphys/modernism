@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
+import * as R from "ramda";
 import { Form, Select, Input, Button, Avatar, Row, Col } from "antd";
 import { FEEDBACK_ARTIST_DICTIONARY } from "../../mock";
-
-import "./FeedbackPage.css";
 import {
   ARTIST_NAME_LABEL,
   ARTIST_NAME_PLACEHOLDER,
@@ -21,8 +20,8 @@ import {
   USER_NAME_PROPERTY,
   USER_NAME_VALIDATION_TEXT
 } from "../../constants/FormConstants";
-import { Link } from "react-router-dom";
-import * as R from "ramda";
+
+import "./FeedbackPage.css";
 
 interface Props {
   form: any;
