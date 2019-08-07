@@ -6,7 +6,7 @@ import MuseumsPage from "./modules/MuseumsPage";
 import ArtistPage from "./modules/ArtistsPage/ArtistPage";
 import { GenresPage } from "./modules/GenresPage";
 import { MuseumPage } from "./modules/MuseumsPage/MuseumPage";
-import AddFeedbackForm from "./modules/FeedbackPage";
+import FeedbackPage from "./modules/FeedbackPage";
 
 export const routes = <Array<RouteConfig>>[
   {
@@ -53,7 +53,7 @@ export const routes = <Array<RouteConfig>>[
         exact: true
       },
       {
-        component: AddFeedbackForm,
+        component: FeedbackPage,
         path: "/feedback",
         exact: true
       }

@@ -59,7 +59,7 @@ export class App extends Component<Props> {
         <body className="App-body">{renderRoutes(route.routes)}</body>
         <footer className="App-footer">
           <Link to="/feedback" className="App-link">
-            Feedback
+            Your feedback is important to us!
           </Link>
         </footer>
       </Layout>
