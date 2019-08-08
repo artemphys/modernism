@@ -41,6 +41,7 @@ class FeedbackForm extends Component<Props> {
   handleSubmit = (e: any) => {
     e.preventDefault();
     const { validateFields, resetFields } = this.props.form;
+
     validateFields((err: any, values: any) => {
       if (!err) {
         this.setState({
@@ -49,6 +50,7 @@ class FeedbackForm extends Component<Props> {
             { ...values, color: this.getBackground() }
           ]
         });
+
         resetFields();
       }
     });
