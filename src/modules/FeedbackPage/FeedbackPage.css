@@ -1,28 +1,14 @@
 .feedback-page {
   display: flex;
   flex-direction: column;
-}
-
-.feedback-form-block {
-  align-self: center;
   max-width: 50vw;
-}
-
-.feedback-form-header {
-  font-size: 18px;
-  color: #565656;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .feedback-list-block {
   margin-top: 60px;
-}
-.feedback-list-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.feedback-list {
-  margin: 0 10px 10px;
+  width: 100%;
 }
 
 .feedbackItem {
@@ -48,7 +34,6 @@
   display: block;
 }
 .feedbackItem__user p {
-  color: #f5434c;
   white-space: nowrap;
   overflow: hidden;
   text-align: center;
@@ -73,7 +58,6 @@
 
 .feedbackItem__subtitle {
   text-decoration: underline;
-  color: #f5434c;
   font-weight: 600;
   margin-bottom: 30px;
 }

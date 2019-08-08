@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import * as R from "ramda";
-import { Form, Select, Input, Button, Avatar, Row, Col } from "antd";
+import {
+  Form,
+  Select,
+  Input,
+  Button,
+  Avatar,
+  Row,
+  Col,
+  Typography
+} from "antd";
 import { FEEDBACK_ARTIST_DICTIONARY } from "../../mock";
 import {
   ARTIST_NAME_LABEL,
@@ -31,6 +40,7 @@ interface Props {
 const FormItem = Form.Item;
 const { TextArea } = Input;
 const { Option } = Select;
+const { Title } = Typography;
 const data = FEEDBACK_ARTIST_DICTIONARY;
 
 class FeedbackForm extends Component<Props> {
@@ -58,11 +68,11 @@ class FeedbackForm extends Component<Props> {
 
   getBackground = () => {
     let letters = "0123456789ABCDEF";
-    let color = "#";
+    let color = ["#"];
     for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+      color.push(letters[Math.floor(Math.random() * 16)]);
     }
-    return color;
+    return color.join("");
   };
 
   renderFeedbackItem = ({
@@ -83,7 +93,7 @@ class FeedbackForm extends Component<Props> {
         <Avatar
           className="feedbackItem__avatar"
           size={64}
-          style={{ color: "#f56a00", backgroundColor: color }}
+          style={{ backgroundColor: color }}
         >
           {username[0].toUpperCase()}
         </Avatar>
@@ -112,13 +122,13 @@ class FeedbackForm extends Component<Props> {
     const { feedbackList } = this.state;
     return (
       <div className="feedback-page">
-        <div className="feedback-form-block">
-          <p className="feedback-form-header">
+        <div>
+          <Title level={3}>
             Thank you for being our guest. Your feedback is important to us. If
             you have a little time, please leave a review on museums or art
             galleries, to help other people in decision.
-          </p>
-          <Form onSubmit={this.handleSubmit} className="feedback-form">
+          </Title>
+          <Form onSubmit={this.handleSubmit}>
             <FormItem label={USER_NAME_LABEL}>
               {getFieldDecorator(USER_NAME_PROPERTY, {
                 rules: [{ required: true, message: USER_NAME_VALIDATION_TEXT }]
@@ -164,10 +174,10 @@ class FeedbackForm extends Component<Props> {
           </Form>
         </div>
         <div className="feedback-list-block">
-          <h1 className="feedback-list-header">{`The most actual feedbacks ${
+          <Title level={3}>{`The most actual feedbacks ${
             feedbackList.length
-          } replies left`}</h1>
-          <div className="feedback-list">
+          } replies left`}</Title>
+          <div>
             {[...this.createRows(feedbackList)].map(
               (row: Array<any>, i: number) => (
                 <Row gutter={16} key={i}>
