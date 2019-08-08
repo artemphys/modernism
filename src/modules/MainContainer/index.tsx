@@ -56,7 +56,12 @@ export class App extends Component<Props> {
         {/*<Breadcrumb style={{ margin: "16px 0" }}>*/}
         {/*{this.renderBreadcrumbs()}*/}
         {/*</Breadcrumb>*/}
-        <body>{renderRoutes(route.routes)}</body>
+        <body className="App-body">{renderRoutes(route.routes)}</body>
+        <footer className="App-footer">
+          <Link to="/feedback" className="App-link">
+            Feedback
+          </Link>
+        </footer>
       </Layout>
     );
   }
