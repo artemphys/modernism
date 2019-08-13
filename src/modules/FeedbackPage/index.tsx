@@ -1,16 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import * as R from "ramda";
-import {
-  Form,
-  Select,
-  Input,
-  Button,
-  Avatar,
-  Row,
-  Col,
-  Typography
-} from "antd";
+import { Form, Select, Input, Button, Typography } from "antd";
 import { FEEDBACK_ARTIST_DICTIONARY } from "../../mock";
 import {
   ARTIST_NAME_LABEL,
@@ -31,6 +20,7 @@ import {
 } from "../../constants/FormConstants";
 
 import "./FeedbackPage.css";
+import { FeedbackItem } from "./FeedbackItem";
 
 interface Props {
   form: any;
@@ -75,51 +65,14 @@ class FeedbackForm extends Component<Props> {
     return color.join("");
   };
 
-  renderFeedbackItem = ({
-    username,
-    email,
-    artist,
-    message,
-    color
-  }: {
-    username: string;
-    email: string;
-    artist: string;
-    message: string;
-    color: string;
-  }) => (
-    <div className="feedbackItem">
-      <div className="feedbackItem__user">
-        <Avatar
-          className="feedbackItem__avatar"
-          size={64}
-          style={{ backgroundColor: color }}
-        >
-          {username[0].toUpperCase()}
-        </Avatar>
-        <p>{username}</p>
-        <p>{email}</p>
-      </div>
-      <div className="feedbackItem__content">
-        <div className="feedbackItem__subtitle">{artist}</div>
-        <Button
-          type="primary"
-          ghost
-          shape="circle"
-          icon="close"
-          className="feedbackItem__delete"
-        />
-        <div className="feedbackItem__content-text">{message}</div>
-        <Link to={`/artists`}>Show all</Link>
-      </div>
-    </div>
+  renderFeedbackItem = (feedbackList: any) => (
+    <FeedbackItem feedbackList={feedbackList} />
   );
-
-  createRows = (feedbackList: Array<any>) => R.splitEvery(4, feedbackList);
 
   render() {
     const { getFieldDecorator } = this.props.form;
     const { feedbackList } = this.state;
+
     return (
       <div className="feedback-page">
         <div>
@@ -177,19 +130,7 @@ class FeedbackForm extends Component<Props> {
           <Title level={3}>{`The most actual feedbacks ${
             feedbackList.length
           } replies left`}</Title>
-          <div>
-            {[...this.createRows(feedbackList)].map(
-              (row: Array<any>, i: number) => (
-                <Row gutter={16} key={i}>
-                  {row.map((item: any, i: number) => (
-                    <Col span={6} key={i}>
-                      {this.renderFeedbackItem(item)}
-                    </Col>
-                  ))}
-                </Row>
-              )
-            )}
-          </div>
+          {feedbackList.map(this.renderFeedbackItem)}
         </div>
       </div>
     );
