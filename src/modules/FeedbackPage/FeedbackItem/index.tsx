@@ -4,20 +4,21 @@ import { Avatar, Button, Card, Typography } from "antd";
 const { Paragraph } = Typography;
 
 interface Props {
-  feedbackList: {
+  data: {
     username: any;
     email: any;
     artist: any;
     message: any;
     color: any;
+    id: any;
   };
+  onDelete: any;
 }
 
 export class FeedbackItem extends Component<Props> {
-
   render() {
-    const { artist, color, username, email, message } = this.props.feedbackList;
-
+    const { artist, color, username, email, message, id } = this.props.data;
+    const { onDelete } = this.props;
     return (
       <Card title={artist} className="feedback-item">
         <div className="feedback-item__user">
@@ -39,6 +40,7 @@ export class FeedbackItem extends Component<Props> {
           shape="circle"
           icon="close"
           className="feedback-item__delete"
+          onClick={() => onDelete(id)}
         />
       </Card>
     );

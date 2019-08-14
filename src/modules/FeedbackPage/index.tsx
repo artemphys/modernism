@@ -1,18 +1,21 @@
 import React, { Component } from "react";
-import { Form, Select, Input, Button, Typography } from "antd";
+import { Form, Select, Input, Button, Typography, Modal } from "antd";
 import { FEEDBACK_ARTIST_DICTIONARY } from "../../mock";
 import {
   ARTIST_NAME_LABEL,
   ARTIST_NAME_PLACEHOLDER,
   ARTIST_NAME_PROPERTY,
   ARTIST_NAME_VALIDATION_TEXT,
+  EMAIL_DEFAULT_VALUE,
   EMAIL_LABEL,
   EMAIL_PLACEHOLDER,
   EMAIL_PROPERTY,
   EMAIL_VALIDATION_TEXT,
+  MESSAGE_DEFAULT_VALUE,
   MESSAGE_LABEL,
   MESSAGE_PROPERTY,
   MESSAGE_VALIDATION_TEXT,
+  USER_NAME_DEFAULT_VALUE,
   USER_NAME_LABEL,
   USER_NAME_PLACEHOLDER,
   USER_NAME_PROPERTY,
@@ -24,18 +27,18 @@ import { FeedbackItem } from "./FeedbackItem";
 
 interface Props {
   form: any;
-  data: any;
 }
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
 const { Option } = Select;
 const { Title } = Typography;
-const data = FEEDBACK_ARTIST_DICTIONARY;
+const dictionary = FEEDBACK_ARTIST_DICTIONARY;
 
 class FeedbackForm extends Component<Props> {
   state = {
-    feedbackList: []
+    data: [],
+    visible: false
   };
 
   handleSubmit = (e: any) => {
@@ -44,11 +47,9 @@ class FeedbackForm extends Component<Props> {
 
     validateFields((err: any, values: any) => {
       if (!err) {
+        const color = this.getBackground();
         this.setState({
-          feedbackList: [
-            ...this.state.feedbackList,
-            { ...values, color: this.getBackground() }
-          ]
+          data: [...this.state.data, { ...values, color, id: color }]
         });
 
         resetFields();
@@ -65,13 +66,27 @@ class FeedbackForm extends Component<Props> {
     return color.join("");
   };
 
-  renderFeedbackItem = (feedbackList: any) => (
-    <FeedbackItem feedbackList={feedbackList} />
+  renderFeedbackItem = (data: any) => (
+    <FeedbackItem data={data} onDelete={this.deleteFeedback} />
   );
+
+  addFeedback = () => {
+    this.setState({ visible: true });
+  };
+
+  closeModal = (e: any) => {
+    console.log(e);
+    this.setState({ visible: false });
+  };
+
+  deleteFeedback = (itemId: any) => {
+    const newData = this.state.data.filter((el: any) => el.id !== itemId);
+    this.setState({ data: newData });
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { feedbackList } = this.state;
+    const { data } = this.state;
 
     return (
       <div className="feedback-page">
@@ -81,56 +96,69 @@ class FeedbackForm extends Component<Props> {
             you have a little time, please leave a review on museums or art
             galleries, to help other people in decision.
           </Title>
-          <Form onSubmit={this.handleSubmit}>
-            <FormItem label={USER_NAME_LABEL}>
-              {getFieldDecorator(USER_NAME_PROPERTY, {
-                rules: [{ required: true, message: USER_NAME_VALIDATION_TEXT }]
-              })(<Input placeholder={USER_NAME_PLACEHOLDER} />)}
-            </FormItem>
-            <FormItem label={EMAIL_LABEL}>
-              {getFieldDecorator(EMAIL_PROPERTY, {
-                rules: [{ required: true, message: EMAIL_VALIDATION_TEXT }]
-              })(<Input placeholder={EMAIL_PLACEHOLDER} />)}
-            </FormItem>
-            <FormItem label={ARTIST_NAME_LABEL}>
-              {getFieldDecorator(ARTIST_NAME_PROPERTY, {
-                rules: [
-                  { required: true, message: ARTIST_NAME_VALIDATION_TEXT }
-                ]
-              })(
-                <Select
-                  defaultValue=".com"
-                  placeholder={ARTIST_NAME_PLACEHOLDER}
-                >
-                  {data.map((item, i) => {
-                    return (
-                      <Option value={item} key={`${i}_${item}`}>
-                        {item}
-                      </Option>
-                    );
-                  })}
-                </Select>
-              )}
-            </FormItem>
-            <FormItem label={MESSAGE_LABEL}>
-              {getFieldDecorator(MESSAGE_PROPERTY, {
-                rules: [{ required: true, message: MESSAGE_VALIDATION_TEXT }]
-              })(<TextArea rows={4} />)}
-            </FormItem>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              Send feedback
-            </Button>
-          </Form>
+          <Button type="primary" onClick={this.addFeedback}>
+            Add feedback
+          </Button>
+          <Modal
+            title="Basic Modal"
+            visible={this.state.visible}
+            footer={null}
+            onCancel={this.closeModal}
+          >
+            <Form onSubmit={this.handleSubmit}>
+              <FormItem label={USER_NAME_LABEL}>
+                {getFieldDecorator(USER_NAME_PROPERTY, {
+                  initialValue: USER_NAME_DEFAULT_VALUE,
+                  rules: [
+                    { required: true, message: USER_NAME_VALIDATION_TEXT }
+                  ]
+                })(<Input placeholder={USER_NAME_PLACEHOLDER} />)}
+              </FormItem>
+              <FormItem label={EMAIL_LABEL}>
+                {getFieldDecorator(EMAIL_PROPERTY, {
+                  initialValue: EMAIL_DEFAULT_VALUE,
+                  rules: [{ required: true, message: EMAIL_VALIDATION_TEXT }]
+                })(<Input placeholder={EMAIL_PLACEHOLDER} />)}
+              </FormItem>
+              <FormItem label={ARTIST_NAME_LABEL}>
+                {getFieldDecorator(ARTIST_NAME_PROPERTY, {
+                  initialValue: dictionary[0],
+                  rules: [
+                    { required: true, message: ARTIST_NAME_VALIDATION_TEXT }
+                  ]
+                })(
+                  <Select placeholder={ARTIST_NAME_PLACEHOLDER}>
+                    {dictionary.map((item, i) => {
+                      return (
+                        <Option value={item} key={`${i}_${item}`}>
+                          {item}
+                        </Option>
+                      );
+                    })}
+                  </Select>
+                )}
+              </FormItem>
+              <FormItem label={MESSAGE_LABEL}>
+                {getFieldDecorator(MESSAGE_PROPERTY, {
+                  initialValue: MESSAGE_DEFAULT_VALUE,
+                  rules: [{ required: true, message: MESSAGE_VALIDATION_TEXT }]
+                })(<TextArea rows={4} />)}
+              </FormItem>
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+              >
+                Send feedback
+              </Button>
+            </Form>
+          </Modal>
         </div>
         <div className="feedback-list-block">
           <Title level={3}>{`The most actual feedbacks ${
-            feedbackList.length
+            data.length
           } replies left`}</Title>
-          {feedbackList.map(this.renderFeedbackItem)}
+          {data.map(this.renderFeedbackItem)}
         </div>
       </div>
     );
