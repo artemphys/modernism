@@ -4,7 +4,7 @@ import { Avatar, Button, Card, Typography } from "antd";
 const { Paragraph } = Typography;
 
 interface Props {
-  feedbackList: {
+  data: {
     username: any;
     email: any;
     artist: any;
@@ -14,10 +14,8 @@ interface Props {
 }
 
 export class FeedbackItem extends Component<Props> {
-
   render() {
-    const { artist, color, username, email, message } = this.props.feedbackList;
-
+    const { artist, color, username, email, message } = this.props.data;
     return (
       <Card title={artist} className="feedback-item">
         <div className="feedback-item__user">
