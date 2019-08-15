@@ -114,11 +114,11 @@ class FeedbackForm extends Component<Props> {
                     defaultValue=".com"
                     placeholder={ARTIST_NAME_PLACEHOLDER}
                   >
-                    {dictionary.map((item, i) => (
+                    {dictionary.map((item, i) =>
                       <Option value={item} key={`${i}_${item}`}>
                         {item}
                       </Option>
-                    ))}
+                    )}
                   </Select>
                 )}
               </FormItem>
