@@ -65,11 +65,10 @@ class FeedbackForm extends Component<Props> {
 
   renderFeedbackItem = (data: any) => <FeedbackItem data={data} />;
 
-  toggleModal = () => {
+  toggleModal = () =>
     this.setState({
       visible: !this.state.visible
     });
-  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
