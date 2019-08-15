@@ -96,7 +96,7 @@ class FeedbackForm extends Component<Props> {
             Add feedback
           </Button>
           <Modal
-            title="Basic Modal"
+            title="Feedback form"
             visible={this.state.visible}
             footer={null}
             onCancel={this.toggleModal}
