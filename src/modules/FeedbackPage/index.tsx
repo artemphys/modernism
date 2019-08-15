@@ -70,19 +70,15 @@ class FeedbackForm extends Component<Props> {
     <FeedbackItem data={data} onDelete={this.deleteFeedback} />
   );
 
-  addFeedback = () => {
-    this.setState({ visible: true });
-  };
-
-  closeModal = (e: any) => {
-    console.log(e);
-    this.setState({ visible: false });
-  };
-
   deleteFeedback = (itemId: any) => {
     const newData = this.state.data.filter((el: any) => el.id !== itemId);
     this.setState({ data: newData });
   };
+
+  toggleModal = () =>
+    this.setState({
+      visible: !this.state.visible
+    });
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -96,14 +92,14 @@ class FeedbackForm extends Component<Props> {
             you have a little time, please leave a review on museums or art
             galleries, to help other people in decision.
           </Title>
-          <Button type="primary" onClick={this.addFeedback}>
+          <Button type="primary" onClick={this.toggleModal}>
             Add feedback
           </Button>
           <Modal
             title="Basic Modal"
             visible={this.state.visible}
             footer={null}
-            onCancel={this.closeModal}
+            onCancel={this.toggleModal}
           >
             <Form onSubmit={this.handleSubmit}>
               <FormItem label={USER_NAME_LABEL}>
@@ -128,13 +124,11 @@ class FeedbackForm extends Component<Props> {
                   ]
                 })(
                   <Select placeholder={ARTIST_NAME_PLACEHOLDER}>
-                    {dictionary.map((item, i) => {
-                      return (
+                    {dictionary.map((item, i) =>
                         <Option value={item} key={`${i}_${item}`}>
                           {item}
                         </Option>
-                      );
-                    })}
+                    )}
                   </Select>
                 )}
               </FormItem>
