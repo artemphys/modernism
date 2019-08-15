@@ -65,12 +65,11 @@ class FeedbackForm extends Component<Props> {
 
   renderFeedbackItem = (data: any) => <FeedbackItem data={data} />;
 
-  addFeedback = () => {
+  showModal = () => {
     this.setState({ visible: true });
   };
 
-  closeModal = (e: any) => {
-    console.log(e);
+  closeModal = () => {
     this.setState({ visible: false });
   };
 
@@ -86,7 +85,7 @@ class FeedbackForm extends Component<Props> {
             you have a little time, please leave a review on museums or art
             galleries, to help other people in decision.
           </Title>
-          <Button type="primary" onClick={this.addFeedback}>
+          <Button type="primary" onClick={this.showModal}>
             Add feedback
           </Button>
           <Modal
@@ -118,13 +117,11 @@ class FeedbackForm extends Component<Props> {
                     defaultValue=".com"
                     placeholder={ARTIST_NAME_PLACEHOLDER}
                   >
-                    {dictionary.map((item, i) => {
-                      return (
-                        <Option value={item} key={`${i}_${item}`}>
-                          {item}
-                        </Option>
-                      );
-                    })}
+                    {dictionary.map((item, i) =>
+                      <Option value={item} key={`${i}_${item}`}>
+                        {item}
+                      </Option>
+                    )}
                   </Select>
                 )}
               </FormItem>
