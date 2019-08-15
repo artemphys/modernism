@@ -6,16 +6,13 @@ import {
   ARTIST_NAME_PLACEHOLDER,
   ARTIST_NAME_PROPERTY,
   ARTIST_NAME_VALIDATION_TEXT,
-  EMAIL_DEFAULT_VALUE,
   EMAIL_LABEL,
   EMAIL_PLACEHOLDER,
   EMAIL_PROPERTY,
   EMAIL_VALIDATION_TEXT,
-  MESSAGE_DEFAULT_VALUE,
   MESSAGE_LABEL,
   MESSAGE_PROPERTY,
   MESSAGE_VALIDATION_TEXT,
-  USER_NAME_DEFAULT_VALUE,
   USER_NAME_LABEL,
   USER_NAME_PLACEHOLDER,
   USER_NAME_PROPERTY,
@@ -37,7 +34,15 @@ const dictionary = FEEDBACK_ARTIST_DICTIONARY;
 
 class FeedbackForm extends Component<Props> {
   state = {
-    data: [],
+    data: [
+      {
+        username: "Vasya Vasyliev",
+        email: "Vas_Vasyliev@gmail.com",
+        artist: dictionary[0],
+        message:
+          "In writing terms, it suffers from two distinct problems 1. Forcing too much information into too short a space: the result is dense sentences that the reader must spend time unpicking to understand. 2. Artspeak and jargon: it uses a lot of language particular to the discipline of art and therefore contains words and ideas that might not be understood by readers who don’t know art world language and concepts. 4. Unfinished narratives: beginning a story and not finishing it, ie stories hinted at but not told, unexplained gaps in timelines, leaps from an artist’s controversial status to sudden acceptance as establishment figure and so on."
+      }
+    ],
     visible: false
   };
 
@@ -104,7 +109,6 @@ class FeedbackForm extends Component<Props> {
             <Form onSubmit={this.handleSubmit}>
               <FormItem label={USER_NAME_LABEL}>
                 {getFieldDecorator(USER_NAME_PROPERTY, {
-                  initialValue: USER_NAME_DEFAULT_VALUE,
                   rules: [
                     { required: true, message: USER_NAME_VALIDATION_TEXT }
                   ]
@@ -112,29 +116,26 @@ class FeedbackForm extends Component<Props> {
               </FormItem>
               <FormItem label={EMAIL_LABEL}>
                 {getFieldDecorator(EMAIL_PROPERTY, {
-                  initialValue: EMAIL_DEFAULT_VALUE,
                   rules: [{ required: true, message: EMAIL_VALIDATION_TEXT }]
                 })(<Input placeholder={EMAIL_PLACEHOLDER} />)}
               </FormItem>
               <FormItem label={ARTIST_NAME_LABEL}>
                 {getFieldDecorator(ARTIST_NAME_PROPERTY, {
-                  initialValue: dictionary[0],
                   rules: [
                     { required: true, message: ARTIST_NAME_VALIDATION_TEXT }
                   ]
                 })(
                   <Select placeholder={ARTIST_NAME_PLACEHOLDER}>
-                    {dictionary.map((item, i) =>
-                        <Option value={item} key={`${i}_${item}`}>
-                          {item}
-                        </Option>
-                    )}
+                    {dictionary.map((item, i) => (
+                      <Option value={item} key={`${i}_${item}`}>
+                        {item}
+                      </Option>
+                    ))}
                   </Select>
                 )}
               </FormItem>
               <FormItem label={MESSAGE_LABEL}>
                 {getFieldDecorator(MESSAGE_PROPERTY, {
-                  initialValue: MESSAGE_DEFAULT_VALUE,
                   rules: [{ required: true, message: MESSAGE_VALIDATION_TEXT }]
                 })(<TextArea rows={4} />)}
               </FormItem>
