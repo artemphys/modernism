@@ -56,7 +56,6 @@ export class FeedbackItem extends Component<Props> {
             </Fragment>
           ) : (
             <Paragraph>{message}</Paragraph>
-
           )}
         </div>
         <Button
