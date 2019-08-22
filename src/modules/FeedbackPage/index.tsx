@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Form, Select, Input, Button, Typography, Modal } from "antd";
+import {
+  Form,
+  Select,
+  Input,
+  Button,
+  Typography,
+  Modal,
+  notification
+} from "antd";
 import { FEEDBACK_ARTIST_DICTIONARY } from "../../mock";
 import {
   ARTIST_NAME_LABEL,
@@ -40,7 +48,8 @@ class FeedbackForm extends Component<Props> {
         email: "Vas_Vasyliev@gmail.com",
         artist: dictionary[0],
         message:
-          "In writing terms, it suffers from two distinct problems 1. Forcing too much information into too short a space: the result is dense sentences that the reader must spend time unpicking to understand. 2. Artspeak and jargon: it uses a lot of language particular to the discipline of art and therefore contains words and ideas that might not be understood by readers who don’t know art world language and concepts. 4. Unfinished narratives: beginning a story and not finishing it, ie stories hinted at but not told, unexplained gaps in timelines, leaps from an artist’s controversial status to sudden acceptance as establishment figure and so on."
+          "In writing terms, it suffers from two distinct problems 1. Forcing too much information into too short a space: the result is dense sentences that the reader must spend time unpicking to understand. 2. Artspeak and jargon: it uses a lot of language particular to the discipline of art and therefore contains words and ideas that might not be understood by readers who don’t know art world language and concepts. 4. Unfinished narratives: beginning a story and not finishing it, ie stories hinted at but not told, unexplained gaps in timelines, leaps from an artist’s controversial status to sudden acceptance as establishment figure and so on.",
+        id: 123
       }
     ],
     visible: false
@@ -78,6 +87,12 @@ class FeedbackForm extends Component<Props> {
   deleteFeedback = (itemId: any) => {
     const newData = this.state.data.filter((el: any) => el.id !== itemId);
     this.setState({ data: newData });
+    const args = {
+      message: "",
+      description: "Your feedback has been deleted",
+      duration: 0
+    };
+    notification.open(args);
   };
 
   toggleModal = () =>
