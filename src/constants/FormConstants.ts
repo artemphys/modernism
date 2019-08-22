@@ -12,4 +12,4 @@ export const ARTIST_NAME_PLACEHOLDER = "Artist name";
 export const ARTIST_NAME_VALIDATION_TEXT = "Please select artist name!";
 export const MESSAGE_LABEL = "Your message";
 export const MESSAGE_PROPERTY = "message";
-export const MESSAGE_VALIDATION_TEXT = "Please, inter your feedback!";
+export const MESSAGE_VALIDATION_TEXT = "Please, enter your feedback!";

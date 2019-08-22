@@ -17,8 +17,11 @@ interface Props {
 
 export class FeedbackItem extends Component<Props> {
   render() {
-    const { artist, color, username, email, message, id } = this.props.data;
-    const { onDelete } = this.props;
+    const {
+      data: { artist, color, username, email, message, id },
+      onDelete
+    } = this.props;
+
     return (
       <Card title={artist} className="feedback-item">
         <div className="feedback-item__user">
