@@ -10,12 +10,18 @@ interface Props {
     artist: any;
     message: any;
     color: any;
+    id: any;
   };
+  onDelete: any;
 }
 
 export class FeedbackItem extends Component<Props> {
   render() {
-    const { artist, color, username, email, message } = this.props.data;
+    const {
+      data: { artist, color, username, email, message, id },
+      onDelete
+    } = this.props;
+
     return (
       <Card title={artist} className="feedback-item">
         <div className="feedback-item__user">
@@ -37,6 +43,7 @@ export class FeedbackItem extends Component<Props> {
           shape="circle"
           icon="close"
           className="feedback-item__delete"
+          onClick={() => onDelete(id)}
         />
       </Card>
     );

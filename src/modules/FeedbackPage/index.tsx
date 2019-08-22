@@ -34,7 +34,15 @@ const dictionary = FEEDBACK_ARTIST_DICTIONARY;
 
 class FeedbackForm extends Component<Props> {
   state = {
-    data: [],
+    data: [
+      {
+        username: "Vasya Vasyliev",
+        email: "Vas_Vasyliev@gmail.com",
+        artist: dictionary[0],
+        message:
+          "In writing terms, it suffers from two distinct problems 1. Forcing too much information into too short a space: the result is dense sentences that the reader must spend time unpicking to understand. 2. Artspeak and jargon: it uses a lot of language particular to the discipline of art and therefore contains words and ideas that might not be understood by readers who don’t know art world language and concepts. 4. Unfinished narratives: beginning a story and not finishing it, ie stories hinted at but not told, unexplained gaps in timelines, leaps from an artist’s controversial status to sudden acceptance as establishment figure and so on."
+      }
+    ],
     visible: false
   };
 
@@ -46,7 +54,7 @@ class FeedbackForm extends Component<Props> {
       if (!err) {
         const color = this.getBackground();
         this.setState({
-          data: [...this.state.data, { ...values, color }]
+          data: [...this.state.data, { ...values, color, id: color }]
         });
 
         resetFields();
@@ -63,7 +71,14 @@ class FeedbackForm extends Component<Props> {
     return color.join("");
   };
 
-  renderFeedbackItem = (data: any) => <FeedbackItem data={data} />;
+  renderFeedbackItem = (data: any) => (
+    <FeedbackItem data={data} onDelete={this.deleteFeedback} />
+  );
+
+  deleteFeedback = (itemId: any) => {
+    const newData = this.state.data.filter((el: any) => el.id !== itemId);
+    this.setState({ data: newData });
+  };
 
   toggleModal = () =>
     this.setState({
@@ -86,7 +101,7 @@ class FeedbackForm extends Component<Props> {
             Add feedback
           </Button>
           <Modal
-            title="Basic Modal"
+            title="Feedback form"
             visible={this.state.visible}
             footer={null}
             onCancel={this.toggleModal}
@@ -110,15 +125,12 @@ class FeedbackForm extends Component<Props> {
                     { required: true, message: ARTIST_NAME_VALIDATION_TEXT }
                   ]
                 })(
-                  <Select
-                    defaultValue=".com"
-                    placeholder={ARTIST_NAME_PLACEHOLDER}
-                  >
-                    {dictionary.map((item, i) =>
+                  <Select placeholder={ARTIST_NAME_PLACEHOLDER}>
+                    {dictionary.map((item, i) => (
                       <Option value={item} key={`${i}_${item}`}>
                         {item}
                       </Option>
-                    )}
+                    ))}
                   </Select>
                 )}
               </FormItem>
