@@ -1,0 +1,8 @@
+.img-height-control .ant-card-cover {
+    height: 160px;
+    overflow: hidden;
+}
+
+.img-height-control {
+    margin-bottom: 20px;
+}
