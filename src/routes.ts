@@ -7,6 +7,7 @@ import ArtistPage from "./modules/ArtistsPage/ArtistPage";
 import { GenresPage } from "./modules/GenresPage";
 import { MuseumPage } from "./modules/MuseumsPage/MuseumPage";
 import FeedbackPage from "./modules/FeedbackPage";
+import { EventsPage } from "./modules/Events";
 
 export const routes = <Array<RouteConfig>>[
   {
@@ -55,6 +56,11 @@ export const routes = <Array<RouteConfig>>[
       {
         component: FeedbackPage,
         path: "/feedback",
+        exact: true
+      },
+      {
+        component: EventsPage,
+        path: "/events",
         exact: true
       }
     ]
