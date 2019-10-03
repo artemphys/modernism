@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Card, Typography } from "antd";
-import { Link } from "react-router-dom";
 import "./EventCard.css";
 
 const { Title, Paragraph } = Typography;
@@ -10,13 +9,19 @@ interface Props {
     name: any;
     imgUrl: any;
     museumAdress: any;
-    date: any;
     eventDates: any;
+    isCharge: any;
   };
 }
 export class EventCard extends Component<Props> {
   render() {
-    const { name, imgUrl, museumAdress, eventDates } = this.props.item;
+    const {
+      name,
+      imgUrl,
+      museumAdress,
+      eventDates,
+      isCharge
+    } = this.props.item;
     return (
       <Card
         className="img-height-control"
@@ -29,6 +34,7 @@ export class EventCard extends Component<Props> {
         <Paragraph>
           from {eventDates[0]} till {eventDates[1]}
         </Paragraph>
+        <Paragraph>{(isCharge) ? "Free" : "Paid"}</Paragraph>
       </Card>
     );
   }

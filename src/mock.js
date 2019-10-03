@@ -193,7 +193,8 @@ export const EVENTS_DATA = [
       "https://upload.wikimedia.org/wikipedia/commons/f/f6/Paul_Gauguin_-_Vincent_van_Gogh_painting_sunflowers_-_Google_Art_Project.jpg",
     name: "Vincent Willem van Gogh",
     museumAdress: "Museumplein 6, Amsterdam, Netherlands",
-    eventDates: ["2019-09-09", "2019-09-29"]
+    eventDates: ["2019-09-09", "2019-09-29"],
+    isCharge: true
   },
   {
     id: 2,
@@ -202,7 +203,8 @@ export const EVENTS_DATA = [
     name: "Dalí Salvador",
     museumAdress:
       "Gala-Salvador Dalí Square, 5 E-17600 Figueres. Catalonia, Spain",
-    eventDates: ["2020-10-09", "2020-10-29"]
+    eventDates: ["2020-10-09", "2020-10-29"],
+    isCharge: true
   },
   {
     id: 3,
@@ -210,7 +212,8 @@ export const EVENTS_DATA = [
       "https://upload.wikimedia.org/wikipedia/en/a/a3/Picasso_The_Actor_1904.JPG",
     name: "Pablo Picasso",
     museumAdress: "2600 Benjamin Franklin Parkway, Philadelphia, PA 19130, USA",
-    eventDates: ["2018-10-09", "2018-10-29"]
+    eventDates: ["2018-10-09", "2018-10-29"],
+    isCharge: false
   },
   {
     id: 4,
@@ -218,7 +221,8 @@ export const EVENTS_DATA = [
       "https://upload.wikimedia.org/wikipedia/en/3/39/Pablo_Picasso%2C_1913-14%2C_L%27Homme_aux_cartes_%28Card_Player%29%2C_oil_on_canvas%2C_108_x_89.5_cm%2C_Museum_of_Modern_Art%2C_New_York.jpg",
     name: "Pablo Picasso",
     museumAdress: "11 West 53rd Street, New York, N.Y. 10019, USA",
-    eventDates: ["2019-12-20", "2020-02-15"]
+    eventDates: ["2019-12-20", "2020-02-15"],
+    isCharge: false
   },
   {
     id: 5,
@@ -227,6 +231,7 @@ export const EVENTS_DATA = [
     name: "Wassily Kandinsky",
     museumAdress:
       "1071 Fifth Avenue at 89th Street, Manhattan, New York City USA",
-    eventDates: ["2019-09-01", "2019-12-15"]
+    eventDates: ["2019-09-01", "2019-12-15"],
+    isCharge: false
   }
 ];

@@ -7,9 +7,10 @@ interface Props {
 
 export class EventsList extends Component<Props> {
   render() {
+    const { data } = this.props;
     return (
       <div>
-        {this.props.data.map((item: any) => (
+        {data.map((item: any) => (
           <EventCard key={item.id} item={item} />
         ))}
       </div>
