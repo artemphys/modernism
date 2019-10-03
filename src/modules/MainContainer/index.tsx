@@ -48,6 +48,9 @@ export class App extends Component<Props> {
     return (
       <Layout style={{ minHeight: "100vh" }}>
         <header className="App-header">
+          <Link to="/" className="App-link-left ">
+           Home
+          </Link>
           <img src={logo} className="App-logo" alt="logo" />
           <Link to="/museums" className="App-link">
             Museums
