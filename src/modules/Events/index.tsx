@@ -67,6 +67,19 @@ export class EventsPage extends Component<Props> {
     return result;
   };
 
+  getCheckboxValue = (obj: any, field: any) => {
+    for (let key in obj) {
+      if (key === field) return obj[key];
+    }
+  };
+
+  unChecked = () => {
+    this.setState({
+      filteredData: EVENTS_DATA,
+      filters: {}
+    });
+  };
+
   render() {
     const { filteredData } = this.state;
 
@@ -74,7 +87,12 @@ export class EventsPage extends Component<Props> {
       <div>
         <MainTabs history={this.props.history} />
         <div style={{ display: "flex", width: "900px" }}>
-          <EventsFilters onChange={this.onFilterChange} />
+          <EventsFilters
+            onChange={this.onFilterChange}
+            filters={this.state.filters}
+            getCheckedValue={this.getCheckboxValue}
+            unChecked={this.unChecked}
+          />
           <EventsList data={filteredData} />
         </div>
       </div>
