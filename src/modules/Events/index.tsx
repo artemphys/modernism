@@ -73,7 +73,7 @@ export class EventsPage extends Component<Props> {
     }
   };
 
-  unChecked = () => {
+  resetFilters = () => {
     this.setState({
       filteredData: EVENTS_DATA,
       filters: {}
@@ -91,7 +91,7 @@ export class EventsPage extends Component<Props> {
             onChange={this.onFilterChange}
             filters={this.state.filters}
             getCheckedValue={this.getCheckboxValue}
-            unChecked={this.unChecked}
+            resetFilters={this.resetFilters}
           />
           <EventsList data={filteredData} />
         </div>

@@ -5,19 +5,19 @@ interface Props {
   onChange: any;
   getCheckedValue: any;
   filters: any;
-  unChecked: any;
+  resetFilters: any;
 }
 
 const { Title } = Typography;
 
 export class EventsFilters extends Component<Props> {
   render() {
-    const { onChange, getCheckedValue, filters, unChecked } = this.props;
+    const { onChange, getCheckedValue, filters, resetFilters } = this.props;
 
     return (
       <div>
         <Title>Select filters</Title>
-        <Button onClick={unChecked} className="filters__btn">
+        <Button onClick={resetFilters} className="filters__btn">
           Reset all filters
         </Button>
         <div style={{ width: "300px" }} className="filter-block">
