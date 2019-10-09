@@ -3,7 +3,6 @@ import { EventCard } from "./EventCard";
 
 interface Props {
   data: any;
-  search: any;
 }
 
 export class EventsList extends Component<Props> {

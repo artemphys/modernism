@@ -16,7 +16,7 @@ export class EventsPage extends Component<Props> {
   state = {
     filters: {},
     filteredData: EVENTS_DATA,
-    search: ""
+    searchText: ""
   };
 
   onFilterChange = (field: any, value: any) => {
@@ -89,7 +89,7 @@ export class EventsPage extends Component<Props> {
     );
 
     this.setState({
-      search: this.state.search,
+      searchText: this.state.searchText,
       filteredData: filtered
     });
   };
@@ -97,7 +97,7 @@ export class EventsPage extends Component<Props> {
   resetSearch = () => {
     this.setState({
       filteredData: EVENTS_DATA,
-      search: ""
+      searchText: ""
     });
   };
 
@@ -116,7 +116,7 @@ export class EventsPage extends Component<Props> {
             handleSearch={this.handleSearch}
             resetSearch={this.resetSearch}
           />
-          <EventsList data={filteredData} search={this.state.search} />
+          <EventsList data={filteredData} />
         </div>
       </div>
     );
