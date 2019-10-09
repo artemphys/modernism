@@ -10,9 +10,7 @@ export class EventsList extends Component<Props> {
     const { data } = this.props;
     return (
       <div>
-        {data.map((item: any) => (
-          <EventCard key={item.id} item={item} />
-        ))}
+        {data.map((item: any) => <EventCard key={item.id} item={item} />)}
       </div>
     );
   }
