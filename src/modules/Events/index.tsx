@@ -81,15 +81,15 @@ export class EventsPage extends Component<Props> {
     });
   };
 
-  onSearchChange = (value: any) => {
+  handleSearch = (search: any) => {
     let filtered = EVENTS_DATA.filter(
       (item: any) =>
-        item.museumAdress.toLowerCase().indexOf(value.toLowerCase()) > -1 ||
-        item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
+        item.museumAdress.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
+        item.name.toLowerCase().indexOf(search.toLowerCase()) > -1
     );
 
     this.setState({
-      search: value,
+      search: this.state.search,
       filteredData: filtered
     });
   };
@@ -113,8 +113,7 @@ export class EventsPage extends Component<Props> {
             filters={this.state.filters}
             getCheckedValue={this.getCheckboxValue}
             resetFilters={this.resetFilters}
-            search={this.state.search}
-            onSearchChange={this.onSearchChange}
+            handleSearch={this.handleSearch}
             resetSearch={this.resetSearch}
           />
           <EventsList data={filteredData} search={this.state.search} />

@@ -6,8 +6,7 @@ interface Props {
   getCheckedValue: any;
   filters: any;
   resetFilters: any;
-  search: any;
-  onSearchChange: any;
+  handleSearch: any;
   resetSearch: any;
 }
 
@@ -21,7 +20,7 @@ export class EventsFilters extends Component<Props> {
       getCheckedValue,
       filters,
       resetFilters,
-      onSearchChange,
+      handleSearch,
       resetSearch
     } = this.props;
 
@@ -30,7 +29,7 @@ export class EventsFilters extends Component<Props> {
         <Title>Select filters</Title>
         <Search
           placeholder="Search"
-          onSearch={(value: string) => onSearchChange(value)}
+          onSearch={handleSearch}
           style={{ width: 200, marginBottom: 20 }}
           onChange={resetSearch}
           allowClear
