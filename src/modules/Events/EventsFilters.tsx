@@ -1,22 +1,40 @@
 import React, { Component } from "react";
-import { Typography, Checkbox, Button } from "antd";
+import { Typography, Checkbox, Button, Input } from "antd";
 
 interface Props {
   onChange: any;
   getCheckedValue: any;
   filters: any;
   resetFilters: any;
+  search: any;
+  onSearchChange: any;
+  resetSearch: any;
 }
 
 const { Title } = Typography;
+const Search = Input.Search;
 
 export class EventsFilters extends Component<Props> {
   render() {
-    const { onChange, getCheckedValue, filters, resetFilters } = this.props;
+    const {
+      onChange,
+      getCheckedValue,
+      filters,
+      resetFilters,
+      onSearchChange,
+      resetSearch
+    } = this.props;
 
     return (
       <div>
         <Title>Select filters</Title>
+        <Search
+          placeholder="Search"
+          onSearch={(value: string) => onSearchChange(value)}
+          style={{ width: 200, marginBottom: 20 }}
+          onChange={resetSearch}
+          allowClear
+        />
         <Button onClick={resetFilters} className="filters__btn">
           Reset all filters
         </Button>

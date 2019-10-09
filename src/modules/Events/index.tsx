@@ -15,7 +15,8 @@ interface Props {
 export class EventsPage extends Component<Props> {
   state = {
     filters: {},
-    filteredData: EVENTS_DATA
+    filteredData: EVENTS_DATA,
+    search: ""
   };
 
   onFilterChange = (field: any, value: any) => {
@@ -80,6 +81,26 @@ export class EventsPage extends Component<Props> {
     });
   };
 
+  onSearchChange = (value: any) => {
+    let filtered = EVENTS_DATA.filter(
+      (item: any) =>
+        item.museumAdress.toLowerCase().indexOf(value.toLowerCase()) > -1 ||
+        item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
+    );
+
+    this.setState({
+      search: value,
+      filteredData: filtered
+    });
+  };
+
+  resetSearch = () => {
+    this.setState({
+      filteredData: EVENTS_DATA,
+      search: ""
+    });
+  };
+
   render() {
     const { filteredData } = this.state;
 
@@ -92,8 +113,11 @@ export class EventsPage extends Component<Props> {
             filters={this.state.filters}
             getCheckedValue={this.getCheckboxValue}
             resetFilters={this.resetFilters}
+            search={this.state.search}
+            onSearchChange={this.onSearchChange}
+            resetSearch={this.resetSearch}
           />
-          <EventsList data={filteredData} />
+          <EventsList data={filteredData} search={this.state.search} />
         </div>
       </div>
     );
