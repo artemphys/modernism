@@ -19,7 +19,7 @@ export const artistsReducer = (state = initialState, action: any) => {
         ...state,
         data: action.payload,
         isFetching: false,
-        error: ""
+        error: "error"
       };
     case GET_ARTISTS_FAIL:
       return { ...state, data: action.payload.message, isFetching: false };
