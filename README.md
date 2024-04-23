@@ -1,3 +1,5 @@
+React + Redux + MongoDB App
+
 ### 1.npm install
 
 ## Available Scripts
